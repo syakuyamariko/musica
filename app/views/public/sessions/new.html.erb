@@ -4,12 +4,12 @@
 
   <div class="field">
     <%= f.label :アカウント名 %><br />
-    <%= f.text_field :account_id, autocomplete: "current-account_id" %>
+    <%= f.text_field :account_id, autofocus: true, autocomplete: "account_id" %>
   </div>
 
   <div class="field">
     <%= f.label :パスワード %><br />
-    <%= f.password_field :encrypted_password, autofocus: true, autocomplete: "encrypted_password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "current-password" %>
   </div>
 
 
