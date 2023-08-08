@@ -4,16 +4,13 @@ class Public::PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if @post.save
-      redirect_to book_path(@post), notice: "You have created post successfully."
-    else
-      @posts = Post.all
-      render 'index'
-    end
+    @post.save
+    @user = current_user
+    redirect_to posts_path
   end
 
   def index
@@ -24,9 +21,16 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post_new = Post.new
   end
 
   def edit
   end
 
+end
+
+def post_params
+    params.require(:post).permit(:body, :image)
 end

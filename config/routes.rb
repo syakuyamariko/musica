@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root "homes#top"
-    resources :posts, only: [:index,:show,:edit,:create,:destroy,:update] do
-    resource :favorites, only: [:create, :destroy]
+    get "/about" => "homes#about"
+    resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
+    resource :likes, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
   end
     resources :users, only: [:index,:show,:edit,:update]
+    resources :favorites, only: [:new,:index,:show,:edit,:update]
   end
   end
 

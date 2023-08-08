@@ -1,0 +1,20 @@
+<div>
+  <h3><%= @user.user_name %></h3>
+  <%= image_tag @user.get_profile_image, size: '50x50' %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+<p><%= link_to "プロフィール編集", edit_user_path, class: "btn btn-secondary" %></p>
+<% @posts.each do |post| %>
+<div>
+  <% if @user.profile_image.attached? %>
+    <%= image_tag post.get_image, size: '50x50' %>
+    <% else %>
+    <p>No profile image available</p>
+  <% end %>
+  <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image, size: '50x50', class:"mt-3 rounded-circle"; %></p>
+  <p>ユーザーネーム：<%= post.user.user_name %></p>
+  <p>説明：<%= post.body %></p>
+
+</div>
+<% end %>
