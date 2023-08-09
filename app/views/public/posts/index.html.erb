@@ -1,15 +1,16 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-3', style='font-weight: bold; background:#6554AF;'>
       <h2>サイドバー</h2>
         <%= render 'public/users/sidebar', user: current_user %>
     </div>
 
         <div class='col-md-8 offset-md-1'>
-            <h2>投稿一覧</h2>
+            <h2>タイムライン</h2>
               <%#= render 'layouts/errors', obj: @post %> <!--バリデーションの記述を追加-->
               <%#= render 'users/follow_form', user: @user %>
               <%= render 'index', posts: @posts, user: @user %>
-        </div>
+              
+          </div>
     </div>
 </div>

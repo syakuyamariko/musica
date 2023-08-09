@@ -1,0 +1,27 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3', style='font-weight: bold; background:#6554AF;'>
+      <h2>サイドバー</h2>
+      <%= render 'public/users/sidebar', user: current_user %>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+  		<h2><%= @favorite.artist %></h2>
+
+      <table class='table'>
+        <tbody>
+          <tr>
+
+              <td></td>
+              <td>Best1:<%= @favorite.album_best1 %></td>
+              <td>Best2:<%= @favorite.album_best2 %></td>
+              <td>Best3:<%= @favorite.album_best3 %></td>
+
+
+            <% if @favorite.user == current_user %><!--もし、本の投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
+              <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>

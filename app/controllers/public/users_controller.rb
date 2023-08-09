@@ -3,6 +3,8 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @post = Post.new
+
   end
 
   def index
@@ -25,7 +27,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :introduction, :profile_image)
+    params.require(:user).permit(:user_name, :introduction, :profile_image, :image )
   end
 
 end
