@@ -1,28 +1,33 @@
 <!--タイムライン部分テンプ-->
+
       <div class='col-md-12', style='font-weight: bold; background:#9575DE;'>
-        <div class="d-flex align-items-center">
-      <% @posts.each do |post| %>
-        <div class="card-body">
-      <div class="row">
-        <div class="col-2">
-          <%= image_tag post.user.get_profile_image, size: '50x50', class:"mt-3 rounded-circle"; %>
+
+          <% @posts.each do |post| %>
+            <div class="row">
+              <div class="card-body">
+                <div class="col-2">
+                  <%= image_tag post.user.get_profile_image, size: '50x50', class:"mt-3 rounded-circle"; %>
+                </div>
+                <div class="col-10">
+                  <p class="card-text"><%= post.body %></p>
+                  <% if post.image.attached? %>
+                    <%= image_tag post.image, size: "100x100" %>
+                  <% else %>
+                    <p></p>
+                  <% end %>
+                </div>
+                <span><i class="fas fa-user"></i> By <%= post.user.user_name %> ｜ </span>
+                <td><%= render "public/likes/btn", post: post %></td>
+                <td><i class="fa-regular fa-comment"></i><%= post.post_comments.count %></td>
+                <%#= @posts.created_at.strftime('%Y/%m/%d') %>
+              </div>
+
+
+              <% if @post.user == current_user %>
+                <%= link_to "削除", posts_path(@post), method: :delete %>
+              <% end %>
+
+            </div>
+            <% end %>
         </div>
-        <div class="col-10">
-          <p class="card-text"><%= post.body %></p>
-        <% if post.image.attached? %>
-          <%= image_tag post.image, size: "100x100" %>
-        <% else %>
-          <p></p>
-        <% end %>
-        </div>
-        <span><i class="fas fa-user"></i> By <%= post.user.user_name %> ｜ </span>
-        <%#= @posts.created_at.strftime('%Y/%m/%d') %>
-      </div>
-    </div>
-    </div>
-      <% if @post.user == current_user %>
-        <%= link_to "削除", posts_path(@post), method: :delete %>
-      <% end %>
-    <% end %>
-    </div>
 

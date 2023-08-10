@@ -20,9 +20,8 @@ class Public::FavoritesController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.find(params[:id])
+    @favorite = Favorite.find_by(params[:id])
     @user = @favorite.user
-    @favorite_new = Favorite.new
   end
 
   def edit
@@ -33,6 +32,12 @@ class Public::FavoritesController < ApplicationController
     @favorite = Favorite.find(params[:id])
     @favorite.update(favorite_params)
     redirect_to favorite_path(@favorite.id)
+  end
+
+  def destroy
+    @favorite = Favorite.find(params[:id])
+    @favorite.destroy
+    redirect_to favorites_path
   end
 
   def favorite_params

@@ -1,0 +1,4 @@
+<%= form_with model: [post, post_comment] do |f| %>
+  <%= f.text_area :comment, rows:'5', placeholder: "返信内容をここに", class: "w-100" %>
+  <%= f.submit "返信" %>
+<% end %>
