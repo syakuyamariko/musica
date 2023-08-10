@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts
-  has_many :favorites, dependent: :destroy #UserモデルとFavoritesモデルを関連付ける
-  has_many :book_comments, dependent: :destroy #UserモデルとBookCommentモデルを関連付ける
+  has_many :favorites, dependent: :destroy
+  has_many :post_comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォローをした、されたの関係
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #foreign_key(外部キー)で参照するカラムを指定
   # フォロー・フォロワーの一覧画面で使う

@@ -12,4 +12,8 @@ class Post < ApplicationRecord
     image
   end
 
+  def liked_by?(user)
+    likes.exists?(user_id: user.id)
+  end
+
 end

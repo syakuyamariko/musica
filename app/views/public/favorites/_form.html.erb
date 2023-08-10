@@ -1,7 +1,10 @@
-<div class = "container">
-  <div class = "row" style = "margin: 10px;">
-    <div class = "col-12 text-center">
+<div class="container">
+  <div class="row" style="margin: 10px;">
+    <div class="col text-center" style="width: 80%";>
     <h3 class = "col-4 text-center">Favorite Artist</h3>
+
+    <div class="row">
+        <div class="col-md-10">
     <%= form_with model: @favorite, url: '/favorites', method: :post do |f| %>
     <table class = "table table-borderless">
 
@@ -46,5 +49,7 @@
 <% end %>
 </table>
   </div>
+</div>
+</div>
 </div>
 </div>
