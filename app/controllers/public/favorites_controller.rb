@@ -21,7 +21,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def show
-    @favorite = Favorite.find_by(params[:id])
+    @favorite = Favorite.find(params[:id])
     @user = @favorite.user
   end
 

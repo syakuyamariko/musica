@@ -18,14 +18,16 @@
               <td>Best3:<%= @favorite.album_best3 %></td>
 
 
-            <% if @favorite.user == current_user %><!--もし、本の投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
+            <% if @favorite.user == current_user %><!--もし、投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
               <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
               <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
             <% end %>
           </tr>
+
+          <!--いいね-->
         <div>
           <% if @favorite.liked_by?(current_user) %>
-            <%= link_to favorite_likes_path(favorite_id: @favorite), method: :delete do %>
+            <%= link_to favorite_likes_path(favorite: @favorite), method: :delete do %>
               <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
               <%= @favorite.likes.count %>
             <% end %>

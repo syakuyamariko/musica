@@ -18,7 +18,7 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-10">
-                    <p class="card-text"><%= link_to favorite_path(@favorite)do %>
+                    <p class="card-text"><%= link_to favorite_path(favorite.id) do %>
                       <h2><%= favorite.artist %></h2>
                     <% end %>
                     </p>
@@ -31,7 +31,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 
