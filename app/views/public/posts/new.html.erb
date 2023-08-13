@@ -1,19 +1,28 @@
-<div class='container'>
+<div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>新規投稿</h2>
-    <%= form_with model: @post, url: '/posts', method: :post do |f| %>
-      <div class="form-group">
-        <%= f.text_area :body, class: "form-control body" %>
+    <div class='col-md-3', style='font-weight: bold; background:#6554AF;'>
+      <h2>サイドバー</h2>
+        <%= render 'public/users/sidebar', user: current_user %>
+    </div>
+
+    <div class='container'>
+      <div class='row'>
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h2>新規投稿</h2>
+        <%= form_with model: @post, url: '/posts', method: :post do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, class: "form-control body" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :post_image, class: "form-control-file post_image", accept: 'image/*' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "投稿" %>
+          </div>
+        <% end %>
+       </div>
       </div>
-      <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :post_image, class: "form-control-file post_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "投稿" %>
-      </div>
-    <% end %>
+    </div>
   </div>
-</div>
 </div>

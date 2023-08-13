@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @user = current_user
   end
 
   def create
@@ -48,7 +49,7 @@ class Public::PostsController < ApplicationController
 private
 
 def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body, :post_image)
 end
 
 end

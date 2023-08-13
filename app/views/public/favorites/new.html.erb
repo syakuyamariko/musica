@@ -1,50 +1,16 @@
-<div class = "container">
-  <div class = "row" style = "margin: 10px;">
-    <div class = "col-12 text-center">
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#6554AF;'>
+      <h2>サイドバー</h2>
+      <%= render 'public/users/sidebar', user: current_user %>
+    </div>
+
+<div class='col-md-8 offset-md-1'>
     <h3 class = "col-4 text-center">Favorite Artist</h3>
     <%= form_with model: @favorite, url: '/favorites', method: :post do |f| %>
-    <table class = "table table-borderless">
-
-      <tr class = "row">
-          <td class = "col-3"><%= f.label :アーティスト名 %></td>
-          <td class = "col-1 text-right"></td>
-          <td class = "col-2 text-left"><%= f.text_field :artist, autofocus: true %></td>
-          <td></td>
-          <td></td>
-      </tr>
-
-      <tr class = "row">
-        <td class = "col-3"><%= f.label :おすすめアルバム３選！ %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best1" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :album_best1, autofocus: true %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best2" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :album_best2, autofocus: true %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best3" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :album_best3, autofocus: true %></td>
-      </tr>
-      <tr class = "row">
-        <td class = "col-3"><%= f.label :好きな曲３選！ %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best1" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :song_best1, autofocus: true %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best2" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :song_best2, autofocus: true %></td>
-          <td class = "col-1 text-right"><%= f.label :"Best3" %></td>
-          <td class = "col-2 text-left"><%= f.text_field :song_best3, autofocus: true %></td>
-      </tr>
-      <tr class = "row">
-          <td class = "col-3"><%= f.label :自由記入欄 %></td>
-          <td class = "col-1 text-right"></td>
-          <td class = "col-2 text-left"><%= f.text_area :free_record, autofocus: true %></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr class = "row">
-        <td class = "col-3"></td>
-        <td class = "col-1 text-right"></td>
-        <td class = "col-2 text-left"><%= f.submit "保存", class: "btn btn-secondary", style: "background-color: #9575DE;" %></td>
-      </tr>
+  <%= render 'public/favorites/form' %>
 <% end %>
-</table>
+
   </div>
 </div>
 </div>

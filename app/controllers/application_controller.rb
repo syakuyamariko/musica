@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    if resource_class == User
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :account_id, :email])
+#     if resource_class == User
+#     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, :account_id, :email])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:account_id])
-    end
+#     end
   end
 end

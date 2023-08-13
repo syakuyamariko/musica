@@ -2,6 +2,7 @@ class Public::FavoritesController < ApplicationController
 
   def new
     @favorite = Favorite.new
+    @user = User.find_by(params[:id])
   end
 
   def create
@@ -26,6 +27,7 @@ class Public::FavoritesController < ApplicationController
 
   def edit
     @favorite = Favorite.find(params[:id])
+    @user = current_user
   end
 
   def update

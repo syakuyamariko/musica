@@ -1,0 +1,12 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3', style='font-weight: bold; background:#6554AF;'>
+      <h2>サイドバー</h2>
+      <%= render 'public/users/sidebar', user: current_user %>
+    </div>
+<div class='col-md-8 offset-md-1'>
+          <h3 class = "col-6 text-center">いいねした投稿一覧</h3>
+<%= render partial: "public/posts/post", collection: @like_posts %>
+
+</div>
+</div>
