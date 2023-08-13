@@ -10,8 +10,12 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
+
     root "homes#top"
     get "/about" => "homes#about"
+    devise_scope :user do
+    post "users/guest_sign_in", to: "sessions#guest_sign_in"
+    end
     resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
       resource :likes, only: [:index,:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
@@ -26,5 +30,6 @@ Rails.application.routes.draw do
     get :liked_posts
       end
     end
+
   end
 end
