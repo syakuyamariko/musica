@@ -1,11 +1,4 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3', style='font-weight: bold; background:#6554AF;'>
-      <h2>サイドバー</h2>
-        <%= render 'sidebar', user: current_user %>
-    </div>
-
-    <div class='col-md-8 offset-md-1'>
+<div class='col-md-8 offset-md-1'>
       <h2>Users</h2>
         <table class='table'>
           <thead>
@@ -16,7 +9,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @users.each do |user| %>
+            <% users.each do |user| %>
               <tr>
                 <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
                 <td><%= user.user_name %></td>
@@ -25,7 +18,5 @@
               </tr>
             <% end %>
           </tbody>
-</table>
+        </table>
     </div>
-  </div>
-</div>
