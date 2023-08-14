@@ -36,6 +36,35 @@ class Public::UsersController < ApplicationController
     render 'show_liked_posts'
   end
 
+  def withdraw
+    @user = User.find(current_user.id)
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
+  def followings #フォロワー一覧画面の表示実装で追加
+    @users = @user.followings
+  end
+
+  def followers #フォロワー一覧画面の表示実装で追加
+    @users = @user.followers
+  end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(user_name: content)
+    elsif method == 'forward'
+      User.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%' + content)
+    else
+      User.where('name LIKE ?', '%' + content + '%')
+    end
+
+  end
 
   private
 
@@ -53,5 +82,5 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-
 end
+

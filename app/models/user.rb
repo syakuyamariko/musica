@@ -24,6 +24,37 @@ class User < ApplicationRecord
     image
   end
 
+    # フォローしたときの処理
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
+  end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      User.where(user_name: content)
+    elsif method == 'forward'
+      User.where('user_name LIKE ?', content + '%')
+    elsif method == 'backward'
+      User.where('user_name LIKE ?', '%' + content)
+    else
+      User.where('user_name LIKE ?', '%' + content + '%')
+    end
+  end
+
+
+
+# is_deletedがfalseならtrueを返し、ログイン時に退会済みのユーザーが同じアカウントでログイン出来ない設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   GUEST_USER_EMAIL = "guest@example.com"
 

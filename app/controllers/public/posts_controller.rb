@@ -44,12 +44,22 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(body: content)
+    elsif method == 'forward'
+      Post.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Post.where('name LIKE ?', '%' + content)
+    else
+      Post.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 
+  private
 
-private
-
-def post_params
-    params.require(:post).permit(:body, :post_image)
-end
+  def post_params
+      params.require(:post).permit(:body, :post_image)
+  end
 
 end

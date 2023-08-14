@@ -20,16 +20,24 @@ Rails.application.routes.draw do
       resource :likes, only: [:index,:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-    resources :users, only: [:index,:show,:edit,:update,:destroy]
+
+    get 'users/confirm_withdraw' => 'users#confirm_withdraw'
+    patch '/users/withdraw' => 'users#withdraw'
+    resources :users, only: [:index,:show,:edit,:update,:destroy] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
     resources :favorites, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
       resource :likes, only: [:index, :create, :destroy]
     end
+
+    get "/search", to: "searches#search"
 
     resources :users do
       member do
     get :liked_posts
       end
     end
-
   end
 end
