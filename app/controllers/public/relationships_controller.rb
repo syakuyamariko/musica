@@ -1,16 +1,14 @@
 class Public::RelationshipsController < ApplicationController
  before_action :authenticate_user!
-
+# フォローする時
   def create
-    user = User.find(params[:user_id])
-    current_user.follow(user)
+    current_user.follow(params[:user_id])
     redirect_to request.referer
   end
-
+# フォロー外すとき
   def destroy
-    user = User.find(params[:user_id])
-    current_user.unfollow(user)
-    redirect_to  request.referer
+    current_user.unfollow(params[:user_id])
+    redirect_to request.referer
   end
 
   def followings

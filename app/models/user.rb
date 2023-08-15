@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # フォロー・フォロワーの一覧画面で使う
   has_many :followings, through: :relationships, source: :followed #throughでスルーするテーブル、sourceで参照するカラムを指定。
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
   has_one_attached :profile_image
 
   def get_profile_image
@@ -37,6 +38,12 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+# is_deletedがfalseならtrueを返し、ログイン時に退会済みのユーザーが同じアカウントでログイン出来ない設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
+
   def self.search_for(content, method)
     if method == 'perfect'
       User.where(user_name: content)
@@ -50,12 +57,7 @@ class User < ApplicationRecord
   end
 
 
-
-# is_deletedがfalseならtrueを返し、ログイン時に退会済みのユーザーが同じアカウントでログイン出来ない設定
-  def active_for_authentication?
-    super && (is_deleted == false)
-  end
-
+# ゲストログイン
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
