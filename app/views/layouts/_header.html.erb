@@ -1,4 +1,4 @@
-<header role="banner" class= >
+<header role="banner">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/"><span>Musica</span></a>
@@ -20,7 +20,7 @@
           </li>
           <li>
             <%=  link_to posts_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> タイムライン
+              <i class="fa-solid fa-icons"></i> タイムライン
             <% end %>
           </li>
           <li>
@@ -53,9 +53,9 @@
         </ul>
       </div>
     </div>
-  </nav>
   <div class="text-right">
     <%= render "public/searches/form" %>
   </div>
+  </nav>
 </header>
 

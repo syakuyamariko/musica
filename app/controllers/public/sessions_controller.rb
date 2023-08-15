@@ -35,7 +35,7 @@ class Public::SessionsController < Devise::SessionsController
   # 退会しているかを判断するメソッド
   def reject_user
       # 【処理内容1】 入力されたemailからアカウントを1件取得、大文字小文字関係なく、メールアドレス自体が合っていたらok
-    @user = user.find_by(email: params[:user][:email])
+    @user = user.find_by(email: params[:user][:account_id])
     if @user
       if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
         flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"

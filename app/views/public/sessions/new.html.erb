@@ -1,29 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6">
+      <h2 class="text-center">musicaにログイン</h2>
 
-<h2>musicaにログイン</h2>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :アカウント名 %>
+          <%= f.text_field :account_id, class: "form-control", autofocus: true, autocomplete: "account_id" %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label :パスワード %>
+          <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :アカウント名 %><br />
-    <%= f.text_field :account_id, autofocus: true, autocomplete: "account_id" %>
-  </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group">
+            <div class="form-check">
+              <%= f.check_box :remember_me, class: "form-check-input" %>
+              <%= f.label :remember_me, class: "form-check-label" %>
+            </div>
+          </div>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :パスワード %><br />
-    <%= f.password_field :password, autofocus: true, autocomplete: "current-password" %>
-  </div>
-
-
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="text-center">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
-
+</div>

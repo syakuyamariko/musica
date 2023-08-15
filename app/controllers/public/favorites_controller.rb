@@ -14,8 +14,8 @@ class Public::FavoritesController < ApplicationController
   end
 
   def index
-    @favorites = Favorite.all
     @favorite = Favorite.new
+    @favorites = current_user.favorites
     @favorite.id = current_user.id
     @user = current_user
   end
