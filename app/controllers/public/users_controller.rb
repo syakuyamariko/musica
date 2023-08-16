@@ -12,7 +12,8 @@ class Public::UsersController < ApplicationController
 
   def index
     @user = User.find_by(params[:users_id]) #指定した id が存在しないことが想定される場合 → find_by メソッドを使う
-    @users = User.all
+    #@users = User.all
+    @users = User.where(is_deleted: false)
     @post = Post.new
   end
 

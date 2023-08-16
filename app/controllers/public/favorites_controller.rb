@@ -10,14 +10,13 @@ class Public::FavoritesController < ApplicationController
     @favorite.user_id = current_user.id
     @favorite.save
     @user = current_user
-    redirect_to favorites_path
+    redirect_to favorites_path(user_id: @user.id)
   end
 
   def index
+    @favorites = Favorite.where(user_id: (params[:user_id]))
     @favorite = Favorite.new
-    @favorites = current_user.favorites
     @favorite.id = current_user.id
-    @user = current_user
   end
 
   def show
@@ -43,7 +42,7 @@ class Public::FavoritesController < ApplicationController
   end
 
   def favorite_params
-    params.require(:favorite).permit(:artist, :album_best1, :album_best2, :album_best3, :song_best1, :song_best2, :song_best3, :free_record )
+    params.require(:favorite).permit(:user_id, :artist, :album_best1, :album_best2, :album_best3, :song_best1, :song_best2, :song_best3, :free_record )
   end
 
 end
