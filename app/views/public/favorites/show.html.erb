@@ -12,8 +12,8 @@
   <div class="container">
     <div class="panel panel-default">
       <div class="col-12 text-start">
-        <table class="table table-bordered table-secondary">
-          <thead style="color: #FFF; font-weight: bold; background:#EAC7C7;">
+        <table class="table table-bordered custom-bg-color">
+          <thead style="color: #434242; font-weight: bold; background:#F3EFE0;">
             <th>自分が選ぶおすすめアルバム３選</th>
           </thead>
           </div>
@@ -26,8 +26,8 @@
         </table>
 
 
-    <table class="table table-bordered table-secondary">
-          <thead style="color: #FFF; font-weight: bold; background:#EAC7C7;">
+    <table class="table table-bordered custom-bg-color">
+          <thead style="color: #434242; font-weight: bold; background:#F3EFE0;">
             <th>好きな曲３選</th>
           </thead>
           </div>
@@ -46,12 +46,12 @@
         <div>
           <% if @favorite.liked_by?(current_user) %>
             <%= link_to favorite_likes_path(@favorite.id), method: :delete do %>
-              <i class="fa-regular fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
+              <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true" style="color: #E966A0;"></i>
               <%= @favorite.likes.count %>
             <% end %>
           <% else %>
             <%= link_to favorite_likes_path(favorite_id: @favorite), method: :post do %>
-              <i class="fa-regular fa-thumbs-up" aria-hidden="true"></i>
+              <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true"></i>
               <%= @favorite.likes.count %>
             <% end %>
           <% end %>
@@ -65,3 +65,9 @@
               <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
               <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
             <% end %>
+
+<style>
+  .custom-bg-color {
+    background-color: #F9F3F3;
+  }
+</style>

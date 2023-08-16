@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   }
 
 
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update]
+    get "search" => "searches#search"
+  end
+
+
   scope module: :public do
 
     root "homes#top"
@@ -16,8 +22,8 @@ Rails.application.routes.draw do
     devise_scope :user do
     post "users/guest_sign_in", to: "sessions#guest_sign_in"
     end
-    resources :posts, only: [:new,:index,:show,:edit,:create,:destroy,:update] do
-      resource :likes, only: [:index,:create, :destroy]
+    resources :posts, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
+      resource :likes, only: [:create,:index, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
 

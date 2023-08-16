@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="row justify-content-center align-items-center min-vh-100">
+<div class="container mt-5">
+  <div class="row justify-content-center align-items-center">
     <div class="col-md-6">
       <h2 class="text-center">musicaにログイン</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group">
-          <%= f.label :アカウント名 %>
-          <%= f.text_field :account_id, class: "form-control", autofocus: true, autocomplete: "account_id" %>
+          <%= f.label :メールアドレス %>
+          <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="form-group">
@@ -27,6 +27,17 @@
           <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       <% end %>
+    </div>
+    </div>
+      <div class="row">
+    <div class="col-1"></div>
+    <div class="col-4 text-center"><b>会員登録がお済みでない方</b></div>
+  </div>
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <%= link_to "こちら", new_user_registration_path %>から新規登録を行ってください。
     </div>
   </div>
 </div>
