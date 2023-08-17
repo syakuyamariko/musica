@@ -11,7 +11,6 @@
           <th>氏名</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
-          <th colspan="4"></th>
         </tr>
       </div>
     <thead>
@@ -19,7 +18,7 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.id %></td>
-          <td><%= link_to user.full_name, admin_user_path(user.id) %></td>
+          <td><%= link_to user.user_name, admin_user_path(user.id) %></td>
           <td><%= user.email %></td>
           <td><%= user.is_deleted ? '退会' : '有効' %></td>
         </tr>

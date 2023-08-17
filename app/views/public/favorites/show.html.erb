@@ -6,9 +6,15 @@
     </div>
 
     <div class='col-md-8 offset-md-1'>
-  		<h3><%= @favorite.artist %></h3>
 
 
+
+<div class="mt-3 text-right"><% if @favorite.user == current_user %><!--もし、投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
+              <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+            <% end %>
+      </div>
+<h1><%= @favorite.artist %></h1>
   <div class="container">
     <div class="panel panel-default">
       <div class="col-12 text-start">
@@ -19,34 +25,43 @@
           </div>
 
           <tbody>
-              <tr><td>Best1:<%= @favorite.album_best1 %></td></tr>
-              <tr><td>Best2:<%= @favorite.album_best2 %></td></tr>
-              <tr><td>Best3:<%= @favorite.album_best3 %></td></tr>
+            <tr><td>Best1:<%= @favorite.album_best1 %></td></tr>
+            <tr><td>Best2:<%= @favorite.album_best2 %></td></tr>
+            <tr><td>Best3:<%= @favorite.album_best3 %></td></tr>
           </tbody>
         </table>
 
 
-    <table class="table table-bordered custom-bg-color">
+        <table class="table table-bordered custom-bg-color">
           <thead style="color: #434242; font-weight: bold; background:#F3EFE0;">
             <th>好きな曲３選</th>
           </thead>
-          </div>
+    </div>
 
           <tbody>
-              <tr><td>Best1:<%= @favorite.album_best1 %></td></tr>
-              <tr><td>Best2:<%= @favorite.album_best2 %></td></tr>
-              <tr><td>Best3:<%= @favorite.album_best3 %></td></tr>
+            <tr><td>Best1:<%= @favorite.album_best1 %></td></tr>
+            <tr><td>Best2:<%= @favorite.album_best2 %></td></tr>
+            <tr><td>Best3:<%= @favorite.album_best3 %></td></tr>
           </tbody>
         </table>
 
+        <table class="table table-bordered custom-bg-color">
+          <thead style="color: #434242; font-weight: bold; background:#F3EFE0;">
+            <th>フリースペース</th>
+          </thead>
+
+          <tbody>
+            <td><%= @favorite.free_record %></td>
+          </tbody>
+        </table>
   </div>
-  </div>
+     </div>
   </div>
           <!--いいね-->
         <div>
           <% if @favorite.liked_by?(current_user) %>
             <%= link_to favorite_likes_path(@favorite.id), method: :delete do %>
-              <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true" style="color: #E966A0;"></i>
+              <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true" style="color: #EC625F;"></i>
               <%= @favorite.likes.count %>
             <% end %>
           <% else %>
@@ -56,15 +71,8 @@
             <% end %>
           <% end %>
         </div>
-        </tbody>
-        </thead>
 
-      </table>
 
-            <% if @favorite.user == current_user %><!--もし、投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
-              <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
-              <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-            <% end %>
 
 <style>
   .custom-bg-color {

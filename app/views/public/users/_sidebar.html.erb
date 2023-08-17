@@ -5,15 +5,15 @@
       <li class="nav-item">
         <% if user_signed_in? %>
           <%= link_to new_post_path(current_user),class: 'nav-link' do %>
-            <i class="fas fa-home"></i> 投稿
+            <i class="fa-solid fa-user-pen"></i> 投稿
         <% end %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to favorites_path(user_id: current_user.id),class: 'nav-link' do %>
           <i class="fa-solid fa-music"></i> Favorite Artist
             <% end %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to liked_posts_user_path(user),class: 'nav-link' do %>
           <i class="fa-regular fa-heart"></i> Likes
         <% end %>

@@ -38,6 +38,10 @@ Rails.application.routes.draw do
       resource :likes, only: [:index, :create, :destroy]
     end
 
+
+
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create,:show]
     get "/search", to: "searches#search"
 
     resources :users do

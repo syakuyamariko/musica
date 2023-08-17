@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
 
+
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -31,6 +32,16 @@ class Public::SessionsController < Devise::SessionsController
     #binding.irb
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
   end
+
+  def after_sign_in_path_for(resource)
+    current_user  #users_path(@user.id)をcurrent_userに修正
+  end
+
+
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
 
   # 退会しているかを判断するメソッド
   def reject_user

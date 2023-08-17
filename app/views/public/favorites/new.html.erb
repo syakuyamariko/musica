@@ -1,12 +1,12 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#6554AF;'>
-      <h2>サイドバー</h2>
+    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#2E3840;'>
+      <br>
       <%= render 'public/users/sidebar', user: current_user %>
     </div>
 
 <div class='col-md-8 offset-md-1'>
-    <h3 class = "col-4 text-center">Favorite Artist</h3>
+    <h1 class = "col-8">Favorite Artist</h1>
     <%= form_with model: @favorite, url: '/favorites', method: :post do |f| %>
   <%= render 'public/favorites/form' %>
 <% end %>

@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :account_id, :last_kana_name, :email, :is_deleted)
+    params.require(:user).permit(:user_name, :account_id, :email, :is_deleted)
   end
 
 end
