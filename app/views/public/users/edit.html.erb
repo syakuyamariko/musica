@@ -1,7 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#6554AF;'>
-      <h2>サイドバー</h2>
+    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#2E3840;'>
+      <br>
         <%= render 'public/users/sidebar', user: current_user %>
     </div>
 
@@ -15,9 +15,10 @@
             <%= f.text_field :user_name, class: "form-control name" %>
           </div>
          <div class="form-group">
-            <%= f.label :image %>
+            <%= f.label :プロフィール画像 %>
+            <div class="d-flex align-items-center">
             <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-            <%= image_tag @user.get_profile_image, size: '50x50', class: "mt-3 rounded-circle" %>
+            <%= image_tag @user.get_profile_image, size: '100x100', class: "mt-3 rounded-circle" %>
           </div>
           <div class="form-group">
             <%= f.label :自己紹介 %>
@@ -28,5 +29,6 @@
           </div>
         <% end %>
       </div>
-    </div>
+
     <%= link_to "退会する", users_confirm_withdraw_path(@user), class: "btn btn-secondary" %>
+    </div>

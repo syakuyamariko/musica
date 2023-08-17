@@ -13,6 +13,8 @@ class User < ApplicationRecord
   # フォロー・フォロワーの一覧画面で使う
   has_many :followings, through: :relationships, source: :followed #throughでスルーするテーブル、sourceで参照するカラムを指定。
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   has_one_attached :profile_image
 
@@ -67,5 +69,10 @@ class User < ApplicationRecord
       user.user_name = "ゲスト"
     end
   end
+
+# バリデーション
+validates :account_id, presence: true, uniqueness: true,
+                         format: { with: /\A[@a-zA-Z0-9_]+\z/, message: "は@と半角英数字、アンダースコアのみ使用可能です" },
+                         length: { minimum: 6, message: "は6文字以上で入力してください" }
 
 end
