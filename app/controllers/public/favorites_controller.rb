@@ -31,8 +31,14 @@ class Public::FavoritesController < ApplicationController
 
   def update
     @favorite = Favorite.find(params[:id])
-    @favorite.update(favorite_params)
-    redirect_to favorite_path(@favorite.id)
+    if @favorite.update(favorite_params)
+      flash[:success] = "更新に成功しました"
+      redirect_to favorite_path(@favorite.id)
+    else
+      flash[:error] = "更新に失敗しました"
+      render :edit
+    end
+
   end
 
   def destroy

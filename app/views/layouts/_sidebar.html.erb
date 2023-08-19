@@ -1,74 +1,87 @@
-     <% if admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to admin_users_path, class: "nav-link" do %>
-             <i class="fas fa-users">会員一覧</i>
-        <% end %>
-          </li>
-          <li class="nav-item">
-           <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
-              <i class="fas fa-sign-out-alt">ログアウト</i>
-            <% end %>
-          </li>
 
-          <% elsif user_signed_in? %>
-          <li>
-            <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> My page
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> Users
-            <% end %>
-          </li>
+    <ul class="nav flex-column">
+  <% if admin_signed_in? %>
+    <li class="nav-item">
+      <%= link_to admin_users_path, class: "nav-link text-light" do %>
+        <i class="fas fa-users"></i> 会員一覧
+      <% end %>
+    </li>
+     <li>
+      <%=  link_to admin_posts_path ,class: 'nav-link text-light' do %>
+        <i class="fa-solid fa-icons"></i> タイムライン
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+        <i class="fas fa-sign-out-alt"></i> ログアウト
+      <% end %>
+    </li>
+    <br>
+  <div class="text-center">
+    <%= render "public/searches/form" %>
+  </div>
+  <% elsif user_signed_in? %>
+    <li class="nav-item">
+      <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
+        <i class="fas fa-home"></i> My page
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_post_path(current_user), class: 'nav-link text-light' do %>
+        <i class="fa-solid fa-user-pen"></i> 投稿
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to users_path, class: 'nav-link text-light' do %>
+        <i class="fas fa-users"></i> Users
+      <% end %>
+    </li>
+    <li>
+      <%=  link_to posts_path ,class: 'nav-link text-light' do %>
+        <i class="fa-solid fa-icons"></i> タイムライン
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to favorites_path(user_id: current_user.id), class: 'nav-link text-light' do %>
+        <i class="fa-solid fa-music"></i> Favorite Artist
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to liked_posts_user_path(current_user), class: 'nav-link text-light' do %>
+        <i class="fa-regular fa-heart"></i> Likes
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+        <i class="fas fa-sign-out-alt"></i> Log out
+      <% end %>
+    </li>
+     <br>
+  <div class="text-center">
+    <%= render "public/searches/form" %>
+  </div>
+  <% else %>
+    <!-- ログインしていない場合の項目 -->
+    <li class="nav-item">
+      <%= link_to root_path, class: 'nav-link text-light' do %>
+        <i class="fas fa-home"></i>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to about_path, class: 'nav-link text-light' do %>
+        <i class="fas fa-link"></i> About
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+        <i class="fas fa-user-plus"></i> Sign up
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+        <i class="fas fa-sign-in-alt"></i> Log in
+      <% end %>
+    </li>
+  <% end %>
 
-          <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to new_post_path(current_user),class: 'nav-link text-light' do %>
-            <i class="fa-solid fa-user-pen"></i> 投稿
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to favorites_path(user_id: current_user.id),class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-music"></i> Favorite Artist
-                <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to liked_posts_user_path(@user),class: 'nav-link text-light' do %>
-              <i class="fa-regular fa-heart"></i> Likes
-            <% end %>
-          </li>
-        <% end %>
-
-          <li>
-            <%=  link_to posts_path ,class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-icons"></i> タイムライン
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> Log out
-            <% end %>
-          </li>
-           <% else %>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> About
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> Sign up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> Log in
-            <% end %>
-          </li>
-        <% end %>
+</ul>

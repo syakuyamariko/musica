@@ -1,9 +1,3 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3 sticky-top', style='font-weight: bold; background:#2E3840;'>
-      <br>
-      <%= render 'public/users/sidebar', user: current_user %>
-    </div>
 
     <div class='col-md-8 offset-md-1'>
 
@@ -39,9 +33,9 @@
     </div>
 
           <tbody>
-            <tr><td>Best1:<%= @favorite.album_best1 %></td></tr>
-            <tr><td>Best2:<%= @favorite.album_best2 %></td></tr>
-            <tr><td>Best3:<%= @favorite.album_best3 %></td></tr>
+            <tr><td>Best1:<%= @favorite.song_best1 %></td></tr>
+            <tr><td>Best2:<%= @favorite.song_best2 %></td></tr>
+            <tr><td>Best3:<%= @favorite.song_best3 %></td></tr>
           </tbody>
         </table>
 

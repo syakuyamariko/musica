@@ -8,47 +8,43 @@
   <script src="https://kit.fontawesome.com/c2b855d8cb.js" crossorigin="anonymous"></script>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+    /* サイドバーのスタイルを指定 */
+    .sidebar {
+      font-weight: bold;
+      background: #2E3840;
+      /* その他のスタイルを追加 */
+    }
+  </style>
 </head>
 <body style='font-weight: bold; background:#AED8CC;'>
 
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-3 col-lg-2 d-md-block sidebar", style='font-weight: bold; background:#2E3840;'>
-      <div class="sidebar-sticky">
-         <a class="navbar-brand" href="/"><span>Musica</span></a>
-<div class="container-fluid" style="flex: 1; display: flex;">
-    <div class="col-md-3 col-lg-2 d-md-block bg-light" style="flex: 1;">
-      <aside class="sidebar" style="height: 100%; overflow-y: auto;">
-     
+    <nav class="col-md-3 col-lg-2 d-md-block">
+      <div class="sidebar">
+        <a class="navbar-brand text-light d-flex justify-content-center" href="/"> Musica</a>
+        <ul class="nav flex-column">
+          <aside class="sidebar">
+            <ul class="nav flex-column">
+              <%= render 'layouts/sidebar', user: current_user %>
+            </ul>
+          </aside>
         </ul>
       </div>
+    </nav>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-center mb-2">
+
       </div>
-    <!-- 他のリンクを追加 -->
-</aside>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+        <!-- フラッシュメッセージの表示部分 -->
+   <%= render 'shared/flash_message' %>
+    </main>
+    <!-- フッターのコードを追加 -->
+  </div>
+</div>
 
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <script src="https://kit.fontawesome.com/c2b855d8cb.js" crossorigin="anonymous"></script>
-        <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
-      <body style='font-weight: bold; background:#AED8CC;'>
-        <%#= render 'layouts/header' %>
-         </nav>
-          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-center mb-2">
-
-            </div>
-            <p id="notice"><%= notice %></p>
-            <%= yield %>
-          </main>
-        <%= render 'layouts/footer' %>
-
-        </div>
-        </div>
-      </body>
-    </html>
+</body>
+</html>

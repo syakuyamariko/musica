@@ -6,4 +6,12 @@ def liked_by?(user)
     likes.exists?(user_id: user.id)
 end
 
+validates :artist, presence: true
+validates :album_best1, presence: true
+validates :album_best2, presence: true
+validates :album_best3, presence: true
+validates :song_best1, presence: true
+validates :song_best2, presence: true
+validates :song_best3, presence: true
+
 end

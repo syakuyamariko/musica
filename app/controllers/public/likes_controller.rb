@@ -8,7 +8,7 @@ class Public::LikesController < ApplicationController
     favorite = Favorite.find(params[:favorite_id])
     like = current_user.likes.new(favorite_id: favorite.id)
   end
-    like.save!
+    like.save
     redirect_to request.referer
   end
 

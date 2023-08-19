@@ -1,1 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
+
+.sidebar {
+height:100%;
+position: fixed;
+width: 250px; /* 任意の固定幅 */
+}
