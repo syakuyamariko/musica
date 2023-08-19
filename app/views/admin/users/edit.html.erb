@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+  <div>
+    <h4><%= @user.user_name %>会員情報編集</h4>
+
+    <%= form_for @user, url: admin_user_path(@user), method: :patch do |f| %>
+      <table class="table">
+        <tbody>
+
+          <tr>
+            <th><%= f.label :is_deleted, '退会ステータス' %></th>
+            <th>
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, '有効' %>
+            </th>
+            <th>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, '退会' %>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit '変更を保存', class: 'btn btn-secondary' %>
+    <% end %>
+    <div>
+  <%= link_to "会員詳細へ戻る", admin_user_path(@user.id), class: 'btn btn-secondary' %>
+  </div>
+  </div>
+
+</div>

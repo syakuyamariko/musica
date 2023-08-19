@@ -4,7 +4,7 @@
   <% posts.each do |post| %>
     <div class="row">
       <div class="post-divider">
-        <div class="col-12">
+        <div class="col-12 mt-3">
           <%= image_tag post.user.get_profile_image, size: '50x50', class: "mb-3 mr-3 rounded-circle" %>
           <i class="fas fa-user"></i> By <%= link_to post.user.user_name, user_path(post.user.id) %> ｜ <%= post.user.account_id %>
           <%= post.created_at.strftime('%Y/%m/%d') %>
@@ -25,7 +25,10 @@
               <%= render "public/likes/btn", post: post %>
             </div>
             <div class="col-6 text-right"> <!-- コメント数 -->
-              <i class="fa-regular fa-comment-dots"></i> <%= post.post_comments.count %>
+              <i class="fa-regular fa-comment-dots"></i>
+              <%= link_to new_post_path(post), class: "text-dark" do %>
+                <%= post.post_comments.count %>
+              <% end %>
             </div>
           </div>
         </div>

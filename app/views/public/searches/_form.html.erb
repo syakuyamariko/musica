@@ -1,10 +1,10 @@
-<% if user_signed_in? %>
+
   <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :content, placeholder:"🔍search" %>
     <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
     <%#= f.select :method, options_for_select({"部分一致" => "partial"}) %>
     <%= f.submit "検索" %>
   <% end %>
-<% end %>
+
 
 <%#= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
