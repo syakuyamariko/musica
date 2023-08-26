@@ -4,7 +4,10 @@
       <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
     <% end %>
   </div>
-<h1><%= @favorite.artist %></h1>
+<h1>
+  <%= link_to 'Favorite Artists', favorites_path(user_id: @user.id), style: "font-size: smaller; color: black;" %>
+  &gt; <%= @favorite.artist %>
+</h1>
   <div class="container">
     <div class="panel panel-default">
       <div class="col-12 text-start">
