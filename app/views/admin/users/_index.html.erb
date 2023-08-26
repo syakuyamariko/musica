@@ -1,0 +1,31 @@
+<div class = "container mt-5">
+  <div class = "row">
+    <h4 class = "col-2 text-center" style = "background-color:lightgray">ユーザー一覧</h4>
+  </div>
+
+  <table class = "table table-striped">
+    <thead class = "thead-light">
+      <div class = "row justify-content-center">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </div>
+    <thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= link_to user.user_name, admin_user_path(user.id) %></td>
+          <td><%= user.email %></td>
+          <td><%= user.is_deleted ? '退会' : '有効' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate users %>
+
+</div>

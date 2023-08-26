@@ -1,0 +1,24 @@
+<h3>DM</h3>
+<% @another_entries.each do |entry| %>
+  <%= link_to room_path(entry.room) do %>
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="chat-avatar">
+            <object>
+              <%= link_to user_path(entry.user) do %>
+                <%= image_tag entry.user.get_profile_image, size: '50x50', class: "mb-3 rounded-circle mr-3" %>
+              <% end %>
+            </object>
+          </div>
+          <div class="chat-user-name">
+            <%= entry.user.user_name %>
+          </div>
+        </div>
+        <div class="chat-text">
+          <%= Message.find_by(id: entry.room.message_ids.last)&.content %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

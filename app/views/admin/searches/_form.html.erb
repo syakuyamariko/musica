@@ -1,0 +1,6 @@
+<%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <%= f.text_field :content, placeholder:"🔍search" %>
+  <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
+    <%#= f.select :method, options_for_select({"部分一致" => "partial"}) %>
+  <%= f.submit "検索" %>
+<% end %>

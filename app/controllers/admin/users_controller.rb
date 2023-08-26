@@ -1,8 +1,6 @@
 class Admin::UsersController < ApplicationController
 
   def index
-    #user = user.find(params[:id])
-    #page(params[:page])ページネーション
     @users = User.all.page(params[:page])
   end
 

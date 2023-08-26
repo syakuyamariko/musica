@@ -20,7 +20,7 @@
       <% @messages.each do |m| %>
         <div class="chat-box">
           <div class="chat-face">
-            <%= image_tag m.user.get_profile_image, size:'50x50' %>
+            <%= image_tag m.user.get_profile_image, size: '50x50', class: "mb-3 rounded-circle mr-3" %>
           </div>
           <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
             <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
@@ -29,13 +29,12 @@
       <% end %>
     <% end %>
   </div>
-    <div class="posts">
+    <div class="content">
       <%= form_for @message do |f| %>
         <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
         <%= f.hidden_field :room_id, value: @room.id %>
         <%= f.submit "投稿", class: 'form-submit' %>
       <% end %>
-
-  </div>
+    </div>
 </div>
 </div>
