@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <script src="https://kit.fontawesome.com/c2b855d8cb.js" crossorigin="anonymous"></script>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <style>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <script src="https://kit.fontawesome.com/c2b855d8cb.js" crossorigin="anonymous"></script>
+        <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
     /* サイドバーのスタイルを指定 */
     .sidebar {
       font-weight: bold;
       background: #2E3840;
       /* その他のスタイルを追加 */
     }
-  </style>
-</head>
+    </style>
+  </head>
 <body style='font-weight: bold; background:#AED8CC;'>
 
 <div class="container-fluid">
   <div class="row">
-    <nav class="col-md-3 col-lg-2 d-md-block">
+    <nav>
       <div class="sidebar">
-        <a class="navbar-brand" href="/"><%= image_tag "1.png", :size => "120x120" %></a>
+        <div class="d-flex mt-3 justify-content-center">
+          <a class="navbar-brand" href="/"><%= image_tag "musica.png", :size => "120x120" %></a>
+        </div>
 
         <ul class="nav flex-column">
           <aside class="sidebar">
@@ -40,10 +42,7 @@
       </div>
       <p id="notice"><%= notice %></p>
       <%= yield %>
-        <!-- フラッシュメッセージの表示部分 -->
-   <%= render 'shared/flash_message' %>
     </main>
-    <!-- フッターのコードを追加 -->
   </div>
 </div>
 

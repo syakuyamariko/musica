@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
     <div class='mx-auto col-11 col-sm-10 col-lg-8 col-xl-6'>
-      <h1><i class="fa-solid fa-music"></i><strong>Musica</strong></h1>
-      <p>In  <i class="fa-solid fa-music"></i><strong>Musica</strong>, </p>
+
+       <div class="d-flex justify-content-center">
+          <a class="navbar-brand" href="/"><%= image_tag "musica2.png", :size => "500x500" %></a>
+        </div>
+
       <p></p>
       <p></p>
       <div class="btn-wrapper col-10 mx-auto">
@@ -10,10 +13,10 @@
           <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
         </div>
         <div class="row">
-          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-sm btn-block mb-3 sign_in", style: "background-color: #CD6688;" %>
+          <%= link_to 'ログイン',new_user_session_path, class: "btn btn-sm btn-secondary btn-block mb-3 sign_in", style: "background-color: #F25287;" %>
         </div>
         <div class="row">
-          <%= link_to 'アカウントを作成',new_user_registration_path, class: "btn btn-sm btn-block sign_up" , style: "background-color: #A2BF39;" %>
+          <%= link_to 'アカウントを作成',new_user_registration_path, class: "btn btn-sm btn-secondary btn-block  sign_up" , style: "background-color: #22A39F;" %>
         </div>
       </div>
     </div>

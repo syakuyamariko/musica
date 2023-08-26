@@ -1,20 +1,21 @@
-
 <!-- プロフィール欄 -->
-    <div class="col-md-8 offset-md-1 sticky-top" style="font-weight: bold; background:#F3EFE0;">
-      <%= render 'public/users/profile', user: @user %>
+<div class="col-md-8 offset-md-1 sticky-top" style="font-weight: bold; background:#F3EFE0;">
+    <%= render 'public/users/profile', user: @user %>
+  <div class="col-md-8 offset-md-1" style="font-weight: bold; background:#F3EFE0;">
     <% unless @user.id == current_user.id %>
-  <% if (current_user.following? @user) && (@user.following? current_user)  %>
-  <% if @isRoom == true %>
-    <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="fa-regular fa-envelope fa-2x"></i></a>
-  <% else %>
-    <%= form_for @room do |f| %>
-      <%= fields_for @entry do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
+    <% if (current_user.following? @user) && (@user.following? current_user)  %>
+    <% if @isRoom == true %>
+      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="fa-regular fa-envelope fa-2x"></i></a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
       <% end %>
-      <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+        <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
     <% end %>
-  <% end %>
-  <% end %>
-<% end %>
-          <%= render 'public/posts/index', posts: @posts, user: @user %>
-    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+    <%= render 'public/posts/index', posts: @posts, user: @user %>
+  </div>
+</div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'posts/show'
     get 'posts/destroy'
   end
+
   devise_for :users, skip: [:password], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -44,10 +45,8 @@ Rails.application.routes.draw do
       resource :likes, only: [:index, :create, :destroy]
     end
 
-
-
     resources :messages, only: [:create]
-    resources :rooms, only: [:create,:show]
+    resources :rooms, only: [:create, :index, :show]
     get "/search", to: "searches#search"
 
     resources :users do
