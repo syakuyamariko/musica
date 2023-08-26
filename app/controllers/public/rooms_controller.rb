@@ -30,6 +30,7 @@ class Public::RoomsController < ApplicationController
       @message = Message.new
       @entries = @room.entries
       @another_entry = @entries.where.not(user_id: current_user.id).first
+      @myUserId = current_user.id
     else
       redirect_back(fallback_location: root_path)
     end

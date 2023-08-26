@@ -1,40 +1,48 @@
-<div class='col-md-8 offset-md-1'>
-<div class="left-button">
-  <%= link_to "ユーザー一覧に戻る", users_path %>
-</div>
-<h4 class="rooms-title">気になる同士</h4>
-<% @entries.each do |e| %>
-  <div class="user-name">
-  <strong>
-    <%= image_tag e.user.get_profile_image, size:'50x50' %>
-      <a class="rooms-user-link" href="/users/<%= e.user.id %>">
-        <%= e.user.user_name %>さん
-      </a>
-  </strong>
+<div class='offset-md-1'>
+  <div class="left-button">
+    <%= link_to "ユーザー一覧に戻る", users_path %>
   </div>
-<% end %>
-<hr>
-<div class="chats">
-  <div class="chat">
-    <% if @message.present? %>
-      <% @messages.each do |m| %>
-        <div class="chat-box">
-          <div class="chat-face">
-            <%= image_tag m.user.get_profile_image, size: '50x50', class: "mb-3 rounded-circle mr-3" %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= m.content %></strong> <br>
-            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
-          </div>
+  <% @entries.each do |e| %>
+    <% if @myUserId != e.user.id %>
+      <h2><%= e.user.user_name %>さんとのやりとり</h2>
+    <% end %>
+  <% end %>
+</div>
+
+<% @messages.each do |m| %>
+  <div class="row justify-content-center mt-2"> <!-- 余白を追加 -->
+    <% if m.user == current_user %>
+      <div>
+        <%= image_tag m.user.get_profile_image, size:'80x80', class: "mb-3 rounded-circle mr-3 profile-image align-top" %>
+      </div>
+      <div class="col-10">
+        <div class="says">
+          <i class="fas fa-user"></i> By <%= m.user.user_name %> <br>
+          <p><%= safe_join(m.content.split("\n"),tag(:br)) %></p>
+          <span><%= l m.created_at %></span>
         </div>
-      <% end %>
+      </div>
+    <% else %>
+      <div class="col-10">
+        <div class="other-user-says">
+          <i class="fas fa-user"></i> By <%= m.user.user_name %> <br>
+          <p><%= safe_join(m.content.split("\n"),tag(:br)) %></p>
+          <span><%= l m.created_at %></span>
+        </div>
+      </div>
+      <div>
+        <%= image_tag m.user.get_profile_image, size:'80x80', class: "mb-3 rounded-circle ml-3 profile-image align-top" %>
+      </div>
     <% end %>
   </div>
-    <div class="content">
-      <%= form_for @message do |f| %>
-        <%= f.text_field :content, placeholder: "メッセージを入力して下さい" %>
-        <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit "投稿", class: 'form-submit' %>
-      <% end %>
-    </div>
-</div>
+<% end %>
+
+<div class="mt-3">
+  <div class="row">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい", size: 50 %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.submit "投稿", class: 'form-submit' %>
+    <% end %>
+  </div>
 </div>

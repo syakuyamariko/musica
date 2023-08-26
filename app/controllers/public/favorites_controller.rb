@@ -1,5 +1,7 @@
 class Public::FavoritesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def new
     @favorite = Favorite.new
     @user = User.find_by(params[:id])
@@ -17,6 +19,7 @@ class Public::FavoritesController < ApplicationController
     @favorites = Favorite.where(user_id: (params[:user_id]))
     @favorite = Favorite.new
     @favorite.id = current_user.id
+    @user = current_user
   end
 
   def show

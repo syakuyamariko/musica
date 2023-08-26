@@ -1,4 +1,4 @@
-<h3>DM</h3>
+<h3>DM一覧</h3>
 <% @another_entries.each do |entry| %>
   <%= link_to room_path(entry.room) do %>
     <div class="card">
@@ -12,7 +12,7 @@
             </object>
           </div>
           <div class="chat-user-name">
-            <%= entry.user.user_name %>
+            <i class="fas fa-user"></i> By <%= entry.user.user_name %>
           </div>
         </div>
         <div class="chat-text">

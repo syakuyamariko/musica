@@ -1,9 +1,13 @@
 
-    <div class='col-md-8 offset-md-1'>
-          <h2 class = "col-4 text-center">Favorite Artists</h2>
-            <%= link_to new_favorite_path, class: "btn btn--circle btn--circle-c btn--shadow text-right" do %>
-              <i class="fas fa-plus"></i>
-            <% end %>
+<div class='col-md-8 offset-md-1'>
+  <h2 class="col-4 text-center">Favorite Artists</h2>
+    <% if @user == current_user %>
+    <%= link_to new_favorite_path, class: "btn btn--circle btn--circle-c btn--shadow text-right" do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
+    <% else %>
+  <% end %>
+</div>
 
           <div class='col-md-8 offset-md-1'>
             <% @favorites.each do |favorite| %>
