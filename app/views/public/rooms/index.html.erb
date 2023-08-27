@@ -12,11 +12,12 @@
             </object>
           </div>
           <div class="chat-user-name">
-            <i class="fas fa-user"></i> By <%= entry.user.user_name %>
+            <%= entry.user.user_name %>
           </div>
         </div>
         <div class="chat-text">
           <%= Message.find_by(id: entry.room.message_ids.last)&.content %>
+          By:<%= entry.user.user_name %>
         </div>
       </div>
     </div>

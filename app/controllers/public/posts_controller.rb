@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  #before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -16,8 +16,8 @@ class Public::PostsController < ApplicationController
 
   def index
 #フォローしているユーザーと自分の投稿
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids])
-    @posts = Post.all.order(created_at: :desc)
+   @posts = Post.where(user_id: [current_user.id, *current_user&.following_ids])
+                .order(created_at: :desc)
     @post = Post.new
     @post.id = current_user.id
     @user = current_user
