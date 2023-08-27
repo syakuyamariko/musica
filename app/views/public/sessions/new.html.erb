@@ -3,7 +3,7 @@
     <div class="col-md-6">
       <h2 class="text-center">musicaにログイン</h2>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @user, url: user_session_path do |f| %>
         <div class="form-group">
           <%= f.label :メールアドレス %>
           <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>

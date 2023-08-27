@@ -9,9 +9,8 @@
             <%= @post.user.user_name %>
             <% end %>
           </td>
-          <td><%= link_to @post.body, @post %></td>
-          <td>コメント件数：<%= @post.post_comments.count %></td>
           <td><%= @post.body %></td>
+          <td>コメント件数：<%= @post.post_comments.count %></td>
           <td><%= render 'public/likes/btn', post: @post %></td>
 
           <% if @post.user == current_user %><!--もし、本の投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
