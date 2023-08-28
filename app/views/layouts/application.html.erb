@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <div class="d-block d-md-none">
+<%= render 'layouts/header' %>
+</div>
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
@@ -22,7 +25,7 @@
 <div class="container-fluid">
   <div class="row">
     <nav>
-      <div class="sidebar">
+      <div class="sidebar d-none d-md-block">
         <div class="d-flex mt-3 justify-content-center">
           <a class="navbar-brand" href="/"><%= image_tag "musica.png", :size => "120x120" %></a>
         </div>
@@ -44,7 +47,7 @@
       <%= yield %>
     </main>
   </div>
-</div>
 
+</div>
 </body>
 </html>

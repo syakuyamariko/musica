@@ -16,6 +16,7 @@ class Post < ApplicationRecord
     likes.exists?(user_id: user.id)
   end
 
+
   def self.search_for(content, method)
     if method == 'perfect'
       Post.where(body: content)
@@ -27,4 +28,9 @@ class Post < ApplicationRecord
       Post.where('body LIKE ?', '%' + content + '%')
     end
   end
+
+#バリデーション
+   validates :body,presence: { message: "投稿内容を入力してください" }
+
 end
+
