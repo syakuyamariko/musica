@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_one_attached :post_image
+  has_one_attached :video
 
   def get_image
     unless post_image.attached?

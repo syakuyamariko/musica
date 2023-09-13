@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :videos
   namespace :admin do
     get 'posts/index'
     get 'posts/show'
