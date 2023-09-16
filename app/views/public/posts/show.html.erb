@@ -1,43 +1,11 @@
 <div class='col-md-8 offset-md-1'>
   <h2>Post</h2>
-    <table class='table'>
-      <tbody>
-        <tr>
-          <div class="col-12 mt-3">
-            <%= image_tag @post.user.get_profile_image, size: '50x50', class: "mb-3 mr-3 rounded-circle" %>
-            <i class="fas fa-user"></i> By <%= link_to @post.user.user_name, user_path(@post.user.id) %> ｜ <%= @post.user.account_id %>
-            <%= @post.created_at.strftime('%Y/%m/%d') %>
-          </div>
-          <td><%= @post.body %></td>
-          <td>
-            <% if @post.post_image.attached? %>
-              <%= image_tag @post.get_image, size: '100x100' %>
-            <% else %>
-              <p></p>
-            <% end %>
-          </td>
-          <td>
-            <% if @post.video.attached? %>
-              <video width="320" height="240" controls>
-                <source src="<%= rails_blob_path(@post.video, disposition: "attachment") %>" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            <% end %>
-          </td>
+  <%= render 'show', post: @post, user: @user %>
 
-          <td>コメント件数：<%= @post.post_comments.count %></td>
-          <td><%= render 'public/likes/btn', post: @post %></td>
-
-          <% if @post.user == current_user %><!--もし、本の投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
-            <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
-            <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-
-    <div id="comment_index">
-      <%= render "public/post_comments/index", post: @post %>
-    </div>
+  <div id="comment_index">
+    <%= render "public/post_comments/index", post: @post %>
+  </div>
+    <% if  user_signed_in? %>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    <% end %>
 </div>

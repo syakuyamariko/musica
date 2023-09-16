@@ -14,7 +14,12 @@ class Post < ApplicationRecord
   end
 
   def liked_by?(user)
-    likes.exists?(user_id: user.id)
+  # ユーザーが存在する場合のみ処理を実行
+    if user.present?
+      likes.exists?(user_id: user.id)
+    else
+      false
+    end
   end
 
 

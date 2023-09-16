@@ -7,11 +7,12 @@
           <%= image_tag post_comment.user.get_profile_image, size: "50x50", class:"mt-3 rounded-circle"; %><br>
           <%= post_comment.user.user_name %>
         <% end %>
+        <%= post_comment.created_at.strftime('%Y/%m/%d/%H:%M') %>
       </td>
       <td><%= post_comment.comment %></td>
       <td>
-        <% if post_comment.user == current_user %>
-          <%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+        <% if post_comment.user == current_user || admin_signed_in? %>
+          <%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-right" %>
         <% end %>
       </td>
     </tr>

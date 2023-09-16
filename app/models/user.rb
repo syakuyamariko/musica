@@ -27,6 +27,10 @@ class User < ApplicationRecord
     image
   end
 
+  def user_signed_in?
+    !current_user.nil?
+  end
+
     # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -72,7 +76,7 @@ class User < ApplicationRecord
 
 # バリデーション
 validates :account_id, presence: true, uniqueness: true,
-                         format: { with: /\A[@a-zA-Z0-9_]+\z/, message: "アカウントIDは@と半角英数字、アンダースコアのみ使用可能です" },
+                         format: { with: /\A@[a-zA-Z0-9_]+\z/, message: "アカウントIDは@と半角英数字、アンダースコアのみ使用可能です" },
                          length: { minimum: 6, message: "6文字以上で入力してください" }
 
 end
