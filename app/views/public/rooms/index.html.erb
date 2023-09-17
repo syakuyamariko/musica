@@ -16,8 +16,8 @@
           </div>
         </div>
         <div class="chat-text">
-          <%= Message.find_by(id: entry.room.message_ids.last)&.content %>
-          By:<%= entry.user.user_name %>
+          <% last_message = Message.where(id: entry.room.message_ids.last).first %>
+          <%= last_message&.content %>By: <%= last_message&.user&.user_name %>
         </div>
       </div>
     </div>

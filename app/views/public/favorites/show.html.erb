@@ -50,18 +50,8 @@
   </div>
 </div>
 <!--いいね-->
-<div>
-  <% if @favorite.liked_by?(current_user) %>
-    <%= link_to favorite_likes_path(@favorite.id), method: :delete do %>
-      <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true" style="color: #EC625F;"></i>
-        <%= @favorite.likes.count %>
-    <% end %>
-  <% else %>
-    <%= link_to favorite_likes_path(favorite_id: @favorite), method: :post do %>
-      <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true"></i>
-        <%= @favorite.likes.count %>
-    <% end %>
-  <% end %>
+<div id="good_btn_<%= @favorite.id %>"><!--非同期-->
+  <%= render "public/likes/good_btn", favorite: @favorite %>
 </div>
 <style>
   .custom-bg-color {

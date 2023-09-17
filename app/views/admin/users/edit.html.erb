@@ -12,6 +12,10 @@
               <%= f.radio_button :is_deleted, false %>
               <%= f.label :is_deleted, '有効' %>
             </th>
+            <div class="form-group">
+        <%= f.label :アカウントID %>
+        <%= f.text_field :account_id, class: "form-control name" %>
+      </div>
             <th>
               <%= f.radio_button :is_deleted, true %>
               <%= f.label :is_deleted, '退会' %>

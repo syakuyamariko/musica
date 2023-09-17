@@ -1,6 +1,6 @@
 <div class='col-md-8 offset-md-1'>
   <h1>Favorite Artist</h1>
     <%= form_with model: @favorite, url: '/favorites', method: :post do |f| %>
-      <%= render 'public/favorites/form' %>
+      <%= render 'public/favorites/form', favorite: @favorite %>
     <% end %>
 </div>

@@ -22,7 +22,9 @@
           <div class="row">
             <div class="col-6 text-right"> <!-- いいねボタン -->
               <% if  user_signed_in? %>
+              <div id="like_btn_<%= post.id %>"><!--非同期-->
                <%= render "public/likes/btn", post: post %>
+               </div>
               <% else %>
                  <i class="fas fa-heart" aria-hidden="true"></i>
                 <%= post.likes.count %>

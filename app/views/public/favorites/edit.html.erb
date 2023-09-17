@@ -5,7 +5,7 @@
   <div class='col-md-8 offset-md-1'>
     <h3>Favorite Artist編集画面</h3>
 
-    <%= form_with model: @favorite, url: favorite_path, method: :patch do |f| %>
+    <%= form_with model: favorite, url: favorite_path, method: :patch do |f| %>
       <div class="form-group">
         <%= f.label :アーティスト名 %>
         <div class="form-row">

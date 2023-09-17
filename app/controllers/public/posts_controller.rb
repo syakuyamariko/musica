@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
 
   def index
 #フォローしているユーザーと自分の投稿
-   @posts = Post.where(user_id: [current_user.id, *current_user&.following_ids])
+    @posts = Post.where(user_id: [current_user.id, *current_user&.following_ids])
                 .order(created_at: :desc)
     @post = Post.new
     @post.id = current_user.id
@@ -65,7 +65,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-      params.require(:post).permit(:body, :post_image, :video)
+    params.require(:post).permit(:body, :post_image, :video)
   end
 
 end

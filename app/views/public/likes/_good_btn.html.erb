@@ -1,0 +1,11 @@
+<% if favorite.liked_by?(current_user) %>
+  <%= link_to favorite_likes_path(favorite.id, type: "good"), remote:true, method: :delete do %><!--type: "good"でlikes?type=goodというURLからパラメータを渡す-->
+    <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true" style="color: #EC625F;"></i>
+      <%= favorite.likes.count %>
+  <% end %>
+<% else %>
+  <%= link_to favorite_likes_path(favorite_id: favorite, type: "good"), remote:true, method: :post do %>
+    <i class="fa-regular fa-thumbs-up fa-2x" aria-hidden="true"></i>
+      <%= favorite.likes.count %>
+  <% end %>
+<% end %>
