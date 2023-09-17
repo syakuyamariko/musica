@@ -15,11 +15,11 @@
             <%= f.text_area :body, class: "form-control body" %>
           </div>
           <div class="form-group">
-            <%= f.label :image %>
+            <%= f.label :画像 %>
             <%= f.file_field :post_image, class: "form-control-file post_image", accept: 'image/*' %>
           </div>
           <div class="form-group">
-              <p>動画</p><%= f.file_field :video %> <br>
+              <p>動画（※動画はmp４の形式のみ投稿可能です。）</p><%= f.file_field :video %> <br>
           </div>
           <div class="form-group">
             <%= f.submit "投稿" %>

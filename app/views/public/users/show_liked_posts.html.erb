@@ -1,4 +1,26 @@
 <div class='col-md-8 offset-md-1'>
   <h2>Likes</h2>
-    <%= render partial: "public/posts/post", collection: @like_posts %>
+   <div class='col-md-12', style='font-weight: bold; background:#F3EFE0;'>
+  <div class="row">
+    <div class="col-md-12">
+       <div class="card-body">
+      <div class="col-8">
+        <%= image_tag @post.user.get_profile_image, size: '50x50', class: "mt-3 rounded-circle" %>
+        <i class="fas fa-user"></i> By <%= link_to @post.user.user_name, user_path(@post.user.id) %> ｜ <%= @post.user.account_id %>
+        <%= @post.created_at.strftime('%Y/%m/%d/%H:%M') %>
+      </div>
+      <div class="col-10">
+        <p class="card-text"><%= link_to @post.body, post_path(@post.id) %></p>
+        <% if @post.post_image.attached? %>
+          <%= link_to image_tag(@post.post_image, size: "100x100"), post_path(@post.id) %>
+        <% else %>
+          <p></p>
+        <% end %>
+      </div>
+      <td><%= render "public/likes/btn", post: post %></td>
+      <td><i class="fa-regular fa-comment"></i><%= @post.post_comments.count %></td>
+    </div>
+  </div>
+</div>
+</div>
 </div>

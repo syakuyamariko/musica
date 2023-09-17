@@ -17,6 +17,14 @@
             <p></p>
           <% end %>
         </div>
+        <div>
+            <% if post.video.attached? %>
+              <video width="320" height="240" controls>
+                <source src="<%= rails_blob_path(post.video, disposition: "attachment") %>" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            <% end %>
+        </div>
         <br>
         <div class="col-12">
           <div class="row">
