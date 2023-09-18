@@ -15,6 +15,7 @@ class Public::LikesController < ApplicationController
     else
       render :like
     end
+      @post.create_notification_like!(current_user) #通知メソッドの呼び出し
   end
 
   def destroy

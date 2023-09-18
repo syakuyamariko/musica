@@ -2,7 +2,11 @@ class Message < ApplicationRecord
 
   belongs_to :user
   belongs_to :room
+  has_many :notifications, dependent: :destroy
   has_one_attached :message_image
+  has_one :notification, as: :subject, dependent: :destroy
+
+  after_create_commit :create_notifications
 
   def get_image
     unless message_image.attached?
@@ -13,5 +17,12 @@ class Message < ApplicationRecord
   end
 
   validates :content, presence: true, length: { maximum: 140 }
+
+  private
+
+  def create_notifications
+    Notification.create(subject: self, user: room.user, action_type: :messaged_to_me)
+  end
+
 
 end

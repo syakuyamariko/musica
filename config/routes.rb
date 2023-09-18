@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     devise_scope :user do
     post "users/guest_sign_in", to: "sessions#guest_sign_in"
     end
+    resources :notifications, only: [:index, :destroy]
     resources :posts, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
       resource :likes, only: [:create,:index, :destroy]
       resources :post_comments, only: [:create, :destroy]
