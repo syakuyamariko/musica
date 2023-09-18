@@ -1,9 +1,13 @@
 
 <div class='col-md-8 offset-md-1'>
-  <h2 class="col-4 text-center">Favorite Artists</h2>
+  <h2 class="col-4 text-center"><i class="fa-solid fa-music"></i>Favorite Artists</h2>
     <% if @user == current_user %>
     <%= link_to new_favorite_path, class: "btn btn--circle btn--circle-c btn--shadow text-right" do %>
-      <i class="fas fa-plus"></i>
+      <button class="button-028" aria-label="検索">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+          <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+        </svg>
+      </button>
     <% end %>
     <% else %>
   <% end %>
@@ -15,10 +19,10 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-10">
-                    <p class="card-text"><%= link_to favorite_path(favorite.id) do %>
-                      <h2><%= favorite.artist %></h2>
-                    <% end %>
-
+                    <p class="card-text">
+                      <%= link_to favorite_path(favorite.id), class: 'text-dark' do %>
+                        <h2><%= favorite.artist %></h2>
+                      <% end %>
                     </p>
                   </div>
                 </div>

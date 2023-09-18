@@ -21,6 +21,7 @@ class Message < ApplicationRecord
   private
 
   def create_notifications
+# whereで検索をかけると配列で返ってくるため.firstで最初のuserを絞り込んでいる
     Notification.create(subject: self, user: room.entries.where.not(user_id: user_id).first.user, action_type: :messaged_to_me)
   end
 
