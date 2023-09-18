@@ -21,7 +21,7 @@ class Message < ApplicationRecord
   private
 
   def create_notifications
-    Notification.create(subject: self, user: room.user, action_type: :messaged_to_me)
+    Notification.create(subject: self, user: room.entries.where.not(user_id: user_id).first.user, action_type: :messaged_to_me)
   end
 
 
