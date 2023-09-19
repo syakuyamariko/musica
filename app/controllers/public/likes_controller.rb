@@ -9,13 +9,13 @@ class Public::LikesController < ApplicationController
       like = current_user.likes.new(favorite_id: @favorite.id)
     end
     like.save
-    type = params[:type]
+    type = params[:type] #押されたボタンがgoodマークかlikeマークかでrender先が変わるようにする（link_toからパラメータ）
     if type == "good"
       render :good
     else
       render :like
     end
-      @post.create_notification_like!(current_user) #通知メソッドの呼び出し
+
   end
 
   def destroy

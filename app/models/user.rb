@@ -18,6 +18,11 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   has_one_attached :profile_image
+  
+  
+  def guest?
+    email == "guest@example.com"
+  end
 
   def get_profile_image
     image = profile_image

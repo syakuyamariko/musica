@@ -1,6 +1,7 @@
 class Favorite < ApplicationRecord
 belongs_to :user
 has_many :likes
+has_one :notification, as: :subject, dependent: :destroy #ポリモーフィック関連付け
 
 def liked_by?(user)
     likes.exists?(user_id: user.id)
