@@ -9,7 +9,7 @@
   <div>
     <%= link_to notification.subject.user.user_name, user_path(notification.subject.user) %>
     があなたの
-    <%= link_to '投稿', favorite_path(notification.subject.favorite) %>
+    <%= link_to 'Favorite Artist', favorite_path(notification.subject.favorite) %>
     にいいねしました
   </div>
 <% end %>

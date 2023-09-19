@@ -12,13 +12,12 @@ class Like < ApplicationRecord
 
   def create_notifications
 # subject: 通知の対象となるオブジェクト/end_user: 通知の受信者を表すオブジェクト/action_type: 通知の種類やアクションを表すシンボル
-if self.post_id
-    Notification.create(subject: self, user: self.post.user, action_type: :liked_to_own_post)
-else
-    Notification.create(subject: self, user: self.favorite.user, action_type: :liked_to_own_post)
-end
+    if self.post_id
+        Notification.create(subject: self, user: self.post.user, action_type: :liked_to_own_post)
+    else
+        Notification.create(subject: self, user: self.favorite.user, action_type: :liked_to_own_post)#同じLikeモデル内での定義のためliked_to_own_postでOK
+    end
 
   end
-
 
 end

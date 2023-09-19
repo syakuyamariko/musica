@@ -1,11 +1,9 @@
-
-
 <%#= render 'layouts/errors', obj: @book %> <!--バリデーションの記述を追加-->
 
   <div class='col-md-8 offset-md-1'>
     <h3>Favorite Artist編集画面</h3>
 
-    <%= form_with model: favorite, url: favorite_path, method: :patch do |f| %>
+    <%= form_with model: @favorite, url: favorite_path, method: :patch do |f| %>
       <div class="form-group">
         <%= f.label :アーティスト名 %>
         <div class="form-row">
@@ -53,7 +51,6 @@
         <%= f.label :自由記入欄 %>
           <%= f.text_area :free_record, class: "form-control col" %>
       </div>
-
 
       <%= f.submit "保存", class: "btn btn-secondary", style: "background-color: #22A39F;" %>
     <% end %>
