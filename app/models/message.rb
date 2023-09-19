@@ -25,9 +25,4 @@ class Message < ApplicationRecord
     Notification.create(subject: self, user: room.entries.where.not(user_id: user_id).first.user, action_type: :messaged_to_me)
   end
 
-
-=======
-  validates :content, presence: true, length: { maximum: 140 }
-
->>>>>>> origin/main
 end
