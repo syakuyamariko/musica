@@ -33,13 +33,10 @@ class User < ApplicationRecord
     image
   end
 
-<<<<<<< HEAD
   def user_signed_in?
     !current_user.nil?
   end
 
-=======
->>>>>>> origin/main
     # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)
@@ -76,11 +73,7 @@ class User < ApplicationRecord
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
-<<<<<<< HEAD
     find_or_create_by(email: GUEST_USER_EMAIL) do |user|
-=======
-    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
->>>>>>> origin/main
       user.password = SecureRandom.urlsafe_base64
       user.account_id = "guestuser"
       user.user_name = "ゲスト"
@@ -89,11 +82,7 @@ class User < ApplicationRecord
 
 # バリデーション
 validates :account_id, presence: true, uniqueness: true,
-<<<<<<< HEAD
                          format: { with: /\A@[a-zA-Z0-9_]+\z/, message: "アカウントIDは@と半角英数字、アンダースコアのみ使用可能です" },
-=======
-                         format: { with: /\A[@a-zA-Z0-9_]+\z/, message: "アカウントIDは@と半角英数字、アンダースコアのみ使用可能です" },
->>>>>>> origin/main
                          length: { minimum: 6, message: "6文字以上で入力してください" }
 
 end
