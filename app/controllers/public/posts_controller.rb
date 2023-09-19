@@ -65,11 +65,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-<<<<<<< HEAD
     params.require(:post).permit(:body, :post_image, :video)
-=======
-      params.require(:post).permit(:body, :post_image)
->>>>>>> origin/main
   end
 
 end
