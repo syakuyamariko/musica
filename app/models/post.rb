@@ -2,9 +2,13 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+<<<<<<< HEAD
   has_one :notification, as: :subject, dependent: :destroy
   has_one_attached :post_image
   has_one_attached :video
+=======
+  has_one_attached :post_image
+>>>>>>> origin/main
 
   def get_image
     unless post_image.attached?
@@ -15,12 +19,16 @@ class Post < ApplicationRecord
   end
 
   def liked_by?(user)
+<<<<<<< HEAD
   # ユーザーが存在する場合のみ処理を実行
     if user.present?
       likes.exists?(user_id: user.id)
     else
       false
     end
+=======
+    likes.exists?(user_id: user.id)
+>>>>>>> origin/main
   end
 
 
@@ -36,6 +44,7 @@ class Post < ApplicationRecord
     end
   end
 
+<<<<<<< HEAD
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
@@ -81,6 +90,8 @@ class Post < ApplicationRecord
 
 
 
+=======
+>>>>>>> origin/main
 #バリデーション
    validates :body,presence: { message: "投稿内容を入力してください" }
 

@@ -26,4 +26,8 @@ class Message < ApplicationRecord
   end
 
 
+=======
+  validates :content, presence: true, length: { maximum: 140 }
+
+>>>>>>> origin/main
 end

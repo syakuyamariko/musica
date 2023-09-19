@@ -1,5 +1,10 @@
 class Admin::SearchesController < ApplicationController
+<<<<<<< HEAD
   # before_action :authenticate_user!
+=======
+
+  #before_action :authenticate_user!
+>>>>>>> origin/main
 
   def search
     @model = params[:model]

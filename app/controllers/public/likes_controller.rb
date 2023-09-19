@@ -33,5 +33,5 @@ class Public::LikesController < ApplicationController
     else
       render :like
     end
-  end
+ end
 end
