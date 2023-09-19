@@ -44,7 +44,6 @@ class Post < ApplicationRecord
     end
   end
 
-<<<<<<< HEAD
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
@@ -90,8 +89,6 @@ class Post < ApplicationRecord
 
 
 
-=======
->>>>>>> origin/main
 #バリデーション
    validates :body,presence: { message: "投稿内容を入力してください" }
 

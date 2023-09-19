@@ -15,9 +15,5 @@ class PostComment < ApplicationRecord
     Notification.create(subject: self, user: post.user, action_type: :commented_to_own_post)
   end
 
-=======
-
-    validates :comment, presence: true
->>>>>>> origin/main
 end
 
