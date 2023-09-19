@@ -1,6 +1,7 @@
-class Admin::UsersController < ApplicationController
-
-  def index
+module Admin
+  class UsersControllerBackup27853
+    # Your code here
+    def index
     @users = User.all.page(params[:page]).per(10)
   end
 
@@ -28,4 +29,5 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:user_name, :account_id, :email, :is_deleted)
   end
 
+  end
 end
