@@ -1,8 +1,11 @@
-module Admin
-  class UsersControllerBackup27853
-    # Your code here
-    def index
+class Admin::UsersController < ApplicationController
+
+  def index
+<<<<<<< HEAD
     @users = User.all.page(params[:page]).per(10)
+=======
+    @users = User.all.page(params[:page])
+>>>>>>> origin/main
   end
 
   def show
@@ -15,7 +18,11 @@ module Admin
 
   def update
     @user = User.find(params[:id])
+<<<<<<< HEAD
     if @user.update!(user_params)
+=======
+    if @user.update(user_params)
+>>>>>>> origin/main
       flash[:notice] = "会員情報が更新されました。"
       redirect_to admin_user_path(@user)
     else
@@ -29,5 +36,5 @@ module Admin
     params.require(:user).permit(:user_name, :account_id, :email, :is_deleted)
   end
 
-  end
 end
+

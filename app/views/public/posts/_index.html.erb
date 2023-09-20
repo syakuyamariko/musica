@@ -17,7 +17,7 @@
             <p></p>
           <% end %>
         </div>
-        <div>
+        <div class="text-center">
             <% if post.video.attached? %>
               <video width="320" height="240" controls>
                 <source src="<%= rails_blob_path(post.video, disposition: "attachment") %>" type="video/mp4">

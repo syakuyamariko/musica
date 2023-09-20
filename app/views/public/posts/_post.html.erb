@@ -16,9 +16,9 @@
         <% else %>
           <p></p>
         <% end %>
-      </div>
-      <td><%= render "public/likes/btn", post: post %></td>
-      <td><i class="fa-regular fa-comment"></i><%= post.post_comments.count %></td>
+      <div id="like_btn_<%= post.id %>"><!--非同期-->
+        <td><%= render "public/likes/btn", post: post %></td>
+        <td><i class="fa-regular fa-comment"></i><%= post.post_comments.count %></td>
     </div>
   </div>
 </div>
