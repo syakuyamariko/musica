@@ -27,7 +27,7 @@
 ### 主な利用シーン
 - 同じ趣味の音楽仲間が欲しい時
 - 音楽活動の仲間を募集したい時
-- イベント情報の周知
+- イベント情報の周知など
 
 ### 画像投稿時の注意
 - アーティストやアルバムの画像など著作権に由来する画像の投稿することは禁止されています。
@@ -37,13 +37,13 @@
 
 - ER図
 
-<img width="774" alt="スクリーンショット 2023-08-28 17 06 29" src="https://github.com/syakuyamariko/musica.ver4/assets/135488694/c62cbf70-b31c-4c00-9420-f66923b95722">
+<img width="1041" alt="スクリーンショット 2023-09-22 20 27 12" src="https://github.com/syakuyamariko/musica.ver4/assets/135488694/a9d0ec1b-31e6-4948-b14c-d8da03455d30">
 
 - 画面遷移図
 
-**管理者側**
+**会員側**
 
-<img width="826" alt="スクリーンショット 2023-08-28 17 38 17" src="https://github.com/syakuyamariko/musica.ver4/assets/135488694/88f765da-aefc-4b71-acd2-d3a1dd075b0c">
+<img width="1067" alt="スクリーンショット 2023-09-22 20 25 20" src="https://github.com/syakuyamariko/musica.ver4/assets/135488694/d7604658-bc90-4f05-86fb-952d1944ce06">
 
 **管理者側**
 
