@@ -12,10 +12,7 @@
               <%= f.radio_button :is_deleted, false %>
               <%= f.label :is_deleted, '有効' %>
             </th>
-            <div class="form-group">
-        <%= f.label :アカウントID %>
-        <%= f.text_field :account_id, class: "form-control name" %>
-      </div>
+
             <th>
               <%= f.radio_button :is_deleted, true %>
               <%= f.label :is_deleted, '退会' %>
@@ -23,7 +20,7 @@
           </tr>
         </tbody>
       </table>
-      <%= f.submit '変更を保存', class: 'btn btn-secondary' %>
+      <%= f.submit '変更を保存', class: 'btn btn-secondary', data: { confirm: "本当に実行しますか？(対象の会員で間違いないことを確認してから実行してください)" } %>
     <% end %>
     <div>
   <%= link_to "会員詳細へ戻る", admin_user_path(@user.id), class: 'btn btn-secondary' %>

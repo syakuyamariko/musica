@@ -27,7 +27,15 @@
     <nav>
       <div class="sidebar d-none d-md-block">
         <div class="d-flex mt-3 justify-content-center">
-          <a class="navbar-brand" href="/"><%= image_tag "musica.png", :size => "120x120" %></a>
+          <% if user_signed_in? %>
+            <span class="navbar-brand">
+              <%= image_tag "musica.png", size: "120x120" %>
+            </span>
+          <% else %>
+            <a class="navbar-brand" href="/">
+              <%= image_tag "musica.png", size: "120x120" %>
+            </a>
+          <% end %>
         </div>
 
         <ul class="nav flex-column">

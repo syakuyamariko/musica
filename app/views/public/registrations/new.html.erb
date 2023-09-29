@@ -8,12 +8,12 @@
 
           <div class="field">
             <%= f.label :ユーザー名 %><br />
-            <%= f.text_field :user_name, class: "form-control" %>
+            <%= f.text_field :user_name, class: "form-control", placeholder:"例：musica" %>
           </div>
 
           <div class="field">
             <%= f.label :アカウントID %><br />
-            <%= f.text_field :account_id, class: "form-control" %>
+            <%= f.text_field :account_id, class: "form-control", placeholder:"例：@musica_123" %>
             <% if @user.errors[:account_id].any? %>
               <div class="error">
                 <% @user.errors[:account_id].each do |error| %>
@@ -21,7 +21,7 @@
                 <% end %>
               </div>
             <% end %>
-              <p>※@と半角英数字、アンダースコアのみ使用可能</br>
+              <p>※先頭に英数字の@を付けて下さい。半角英数字、アンダースコアのみ使用可能</br>
               6文字以上で入力してください。</p>
             </div>
 

@@ -1,8 +1,9 @@
 class Admin::PostCommentsController < ApplicationController
-  before_action :authenticate_admin! # 管理者認証が必要な場合、適宜認証の設定を追加
+  before_action :authenticate_admin! #URLからの不正ログインを阻止する
+  before_action :is_matching_login_admin, only: [:destroy]
 
   def index
-    @comments = PostComment.all # または適切な検索条件に基づく取得処理を実装
+    @comments = PostComment.all
   end
 
   def destroy
