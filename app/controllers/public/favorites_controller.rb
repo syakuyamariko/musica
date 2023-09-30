@@ -12,7 +12,7 @@ class Public::FavoritesController < ApplicationController
     @favorite.user_id = current_user.id
     @favorite.save
     @user = current_user
-    redirect_to favorites_path(user_id: @user.id)
+    redirect_to favorites_path(user_id: @user.id), notice: "お気に入りの投稿に成功しました"
   end
 
   def index
@@ -35,19 +35,19 @@ class Public::FavoritesController < ApplicationController
   def update
     @favorite = Favorite.find(params[:id])
     if @favorite.update(favorite_params)
-      flash[:success] = "更新に成功しました"
+      flash[:notice] = "お気に入りが更新されました"
       redirect_to favorite_path(@favorite.id)
     else
-      flash[:error] = "更新に失敗しました"
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
-
   end
 
   def destroy
+    @user = current_user
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-    redirect_to favorites_path
+    redirect_to favorites_path(user_id: @user.id)
   end
 
   def favorite_params
