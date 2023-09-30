@@ -17,6 +17,13 @@ class Public::PostCommentsController < ApplicationController
 
   private
 
+  def is_matching_login_user
+    comment = PostComment.find(params[:id])
+    unless comment.user == current_user
+      redirect_to root_path, alert: "コメントの投稿者以外は削除できません。"
+    end
+  end
+
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end

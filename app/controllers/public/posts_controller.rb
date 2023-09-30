@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy] # ログインユーザーが投稿者であるかをチェックする
 
   def new
     @post = Post.new
@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
   def index
 #フォローしているユーザーと自分の投稿
     @posts = Post.where(user_id: [current_user.id, *current_user&.following_ids])
-                .order(created_at: :desc)
+                 .order(created_at: :desc)
     @post = Post.new
     @post.id = current_user.id
     @user = current_user
@@ -46,9 +46,12 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path
+    if current_user == @post.user
+      @post.destroy
+    redirect_to posts_path, notice: "コメントが削除されました。"
+    end
   end
+
 
   def self.search_for(content, method)
     if method == 'perfect'
@@ -63,6 +66,14 @@ class Public::PostsController < ApplicationController
   end
 
   private
+
+  def is_matching_login_user
+    # ログインユーザーが投稿者であるかをチェックする
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to root_path, alert: "投稿者以外は編集・削除できません。"
+    end
+  end
 
   def post_params
     params.require(:post).permit(:body, :post_image, :video)
