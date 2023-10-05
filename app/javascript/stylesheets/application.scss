@@ -89,3 +89,23 @@ width: 250px; /* 任意の固定幅 */
     fill: #2589d0;
 }
 
+// チャットを始めるボタン
+.button-029 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #aed8cc;
+}
+
+.button-029:hover {
+    border: 1px solid #aed8cc;
+    background-color: #fff;
+}
+
+.button-029:hover path {
+    fill: #aed8cc;
+}
