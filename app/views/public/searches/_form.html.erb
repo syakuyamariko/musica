@@ -1,11 +1,12 @@
 
 <%= form_with url: search_path, method: :get, local: true do |f| %>
  <div class="search-wrap03">
-  <%= f.text_field :content, placeholder: "🔍search", class: "search-area" %>
-  <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
-  <%= f.submit "検索", class: "search-btn" %>
+  <%= f.text_field :content, placeholder: "search", class: "search-area" %>
+  <button type="submit" aria-label="検索"></button>
  </div>
+ <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
 <% end %>
+
 
 <%#= f.select :method, options_for_select({"部分一致" => "partial"}) %>
   <!--<input type="text" class="search-area" placeholder="キーワード入力">-->
