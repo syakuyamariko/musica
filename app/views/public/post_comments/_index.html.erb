@@ -11,8 +11,10 @@
       </td>
       <td><%= post_comment.comment %></td>
       <td>
-        <% if post_comment.user == current_user || admin_signed_in? %>
+        <% if post_comment.user == current_user %>
           <%= link_to "Destroy", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-right" %>
+        <% else post_comment.user == admin_signed_in? %>
+          <%= link_to 'Destroy', admin_post_post_comment_path(post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right" %>
         <% end %>
       </td>
     </tr>
