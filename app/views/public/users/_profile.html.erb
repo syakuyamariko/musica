@@ -17,7 +17,7 @@
         </div>
         <p><%= user.account_id %></p>
         <p><%= user.introduction %></p>
-        <p><%= link_to 'Favorite Artists', favorites_path(user_id: @user.id), style: "color: black;", class: "text-black" %></p>
+        <p><%= link_to 'Favorite Artists', favorites_path(user_id: @user.id), style: "color: #7ab3a2;" %></p>
         <p><%= @user.created_at.strftime('%Y/%m/%d') %></p>
       </div>
   </div>
@@ -26,13 +26,13 @@
     <tr>
       <th>フォロー</th>
       <th>
-        <%= link_to user_followings_path(user) do %>
+        <%= link_to user_followings_path(user), style: "color: #7ab3a2;" do %>
           <%= user.followings.count %>
         <% end %>
       </th>
       <th>フォロワー</th>
       <th>
-        <%= link_to user_followers_path(user) do %>
+        <%= link_to user_followers_path(user), style: "color: #7ab3a2;" do %>
           <%= user.followers.count %>
         <% end %>
       </th>

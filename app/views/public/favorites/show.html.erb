@@ -1,7 +1,7 @@
 <div class='col-md-8 offset-md-1'>
   <div class="mt-3 text-right"><% if @favorite.user == current_user %><!--もし、投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
-    <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success" %></td>
-      <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
+    <td><%= link_to 'Edit', edit_favorite_path(@favorite), class: "btn btn-sm btn-success", style: "background-color: #22A39F;" %></td>
+      <td><%= link_to 'Destroy', @favorite, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", style: "background-color: #EC625F;"%></td>
     <% end %>
   </div>
 <h1>
