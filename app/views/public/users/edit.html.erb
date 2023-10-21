@@ -4,11 +4,7 @@
     <%= form_with model:@user, local:true do |f| %>
       <div class="form-group">
         <%= f.label :ユーザー名 %>
-        <%= f.text_field :user_name, class: "form-control name" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :アカウントID %>
-        <%= f.text_field :account_id, class: "form-control name" %>
+        <%= f.text_field :user_name, class: "form-control name", style: "background-color: #F7F5EB;" %>
       </div>
       <div class="form-group">
         <%= f.label :プロフィール画像 %>
@@ -18,10 +14,10 @@
           </div>
           <div class="form-group">
             <%= f.label :自己紹介 %>
-            <%= f.text_area :introduction, class: "form-control introduction" %>
+            <%= f.text_area :introduction, class: "form-control introduction", style: "background-color: #F7F5EB;" %>
           </div>
           <div class="form-group">
-            <%= f.submit "保存" %>
+            <%= f.submit "保存", class: "btn btn-primary" , style: "background-color: #22A39F;"%>
           </div>
     <% end %>
       </div>

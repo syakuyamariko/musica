@@ -47,10 +47,10 @@
   </div>
 <% end %>
 
-
+</br>
     <%= form_with model: @message, url: '/messages', method: :post do |f| %>
-      <%= f.text_field :content, placeholder: "メッセージを入力して下さい", size: 50 %>
+      <%= f.text_field :content, placeholder: "メッセージを入力して下さい", size: 70 %>
       <%#= f.file_field :message_image, class: "form-control-file message_image", accept: 'image/*' %>
       <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.submit "投稿", class: 'form-submit' %>
+      <%= f.submit "返信", class: "btn btn-primary", style: "background-color: #22A39F;" %>
     <% end %>
