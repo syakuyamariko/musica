@@ -1,25 +1,28 @@
 <h3><i class="fa-regular fa-envelope"></i>DM一覧</h3>
-<% @another_entries.each do |entry| %>
-  <%= link_to room_path(entry.room) do %>
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex">
-          <div class="chat-avatar">
-            <object>
-              <%= link_to user_path(entry.user) do %>
-                <%= image_tag entry.user.get_profile_image, size: '50x50', class: "mb-3 rounded-circle mr-3" %>
-              <% end %>
-            </object>
+
+  <% @another_entries.each do |entry| %>
+    <%= link_to room_path(entry.room) do %>
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex">
+            <div class="chat-avatar">
+              <object>
+                <%= link_to user_path(entry.user) do %>
+                  <%= image_tag entry.user.get_profile_image, size: '50x50', class: "mb-3 rounded-circle mr-3" %>
+                <% end %>
+              </object>
+            </div>
+            <div class="chat-user-name">
+              <%= entry.user.user_name %>
+            </div>
           </div>
-          <div class="chat-user-name">
-            <%= entry.user.user_name %>
+          <div class="chat-text">
+            <% last_message = Message.where(id: entry.room.message_ids.last).first %>
+            <%= last_message&.content %>By: <%= last_message&.user&.user_name %>
           </div>
-        </div>
-        <div class="chat-text">
-          <% last_message = Message.where(id: entry.room.message_ids.last).first %>
-          <%= last_message&.content %>By: <%= last_message&.user&.user_name %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 <% end %>
+
+
