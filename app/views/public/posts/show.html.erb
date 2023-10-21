@@ -5,6 +5,7 @@
   <div id="comment_index">
     <%= render "public/post_comments/index", post: @post %>
   </div>
+  </br>
     <% if  user_signed_in? %>
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     <% end %>

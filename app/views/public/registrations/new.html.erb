@@ -1,53 +1,51 @@
 <%= render 'layouts/error', obj: resource %>
-<div class = "container">
-  <h1 class = "col-12">musicaを始めよう！</h1>
-    <div class = "row" style = "margin: 10px;">
-
-      <div class = "col-6">
-        <%= form_with model: @user, url: user_registration_path do |f| %>
-
-          <div class="field">
-            <%= f.label :ユーザー名 %>
-            <%= f.text_field :user_name, class: "form-control", placeholder:"例：musica", style: "background-color: #F7F5EB;" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :アカウントID %>
-            <%= f.text_field :account_id, class: "form-control", placeholder:"例：@musica_123", style: "background-color: #F7F5EB;" %>
-            <% if @user.errors[:account_id].any? %>
-              <div class="error">
-                <% @user.errors[:account_id].each do |error| %>
-                  <%= error %>
-                <% end %>
-              </div>
-            <% end %>
-              <p>※先頭に英数字の@を付けて下さい</br>
-              半角英数字、アンダースコアのみ使用可能</br>
-              6文字以上で入力してください</p>
+  <div class = "container">
+    <h1 class = "col-12">musicaを始めよう！</h1>
+      <div class = "row" style = "margin: 10px;">
+        <div class = "col-6">
+          <%= form_with model: @user, url: user_registration_path do |f| %>
+            <div class="field">
+              <%= f.label :ユーザー名 %>
+              <%= f.text_field :user_name, class: "form-control", placeholder:"例：musica", style: "background-color: #F7F5EB;" %>
             </div>
 
-          <div class="field">
-            <%= f.label :メールアドレス %>
-            <%= f.email_field :email, class: "form-control", style: "background-color: #F7F5EB;" %>
-          </div>
+            <div class="field">
+              <%= f.label :アカウントID %>
+              <%= f.text_field :account_id, class: "form-control", placeholder:"例：@musica_123", style: "background-color: #F7F5EB;" %>
+              <% if @user.errors[:account_id].any? %>
+                <div class="error">
+                  <% @user.errors[:account_id].each do |error| %>
+                    <%= error %>
+                  <% end %>
+                </div>
+              <% end %>
+                <p>※先頭に英数字の@を付けて下さい</br>
+                半角英数字、アンダースコアのみ使用可能</br>
+                6文字以上で入力してください</p>
+            </div>
 
-          <div class="field">
-            <%= f.label :password, "パスワード" %>
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style: "background-color: #F7F5EB;" %>
-          </div>
+            <div class="field">
+              <%= f.label :メールアドレス %>
+              <%= f.email_field :email, class: "form-control", style: "background-color: #F7F5EB;" %>
+            </div>
 
-          <div class="field">
-            <%= f.label :password_confirmation, "パスワード再入力" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", style: "background-color: #F7F5EB;" %>
-          </div>
-<br>
-          <div class="actions">
-            <%= f.submit "アカウントを作成", class: "btn btn-secondary", style: "background-color: #22A39F;" %>
-          </div>
-        <% end %>
+            <div class="field">
+              <%= f.label :password, "パスワード" %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style: "background-color: #F7F5EB;" %>
+            </div>
 
+            <div class="field">
+              <%= f.label :password_confirmation, "パスワード再入力" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", style: "background-color: #F7F5EB;" %>
+            </div>
+            <br>
+            <div class="actions">
+              <%= f.submit "アカウントを作成", class: "btn btn-secondary", style: "background-color: #22A39F;" %>
+            </div>
+          <% end %>
+        </div>
       </div>
+
+        <div><strong>既に登録済みの方</strong></div>
+        <div><%= link_to "こちら", user_session_path %>からログインしてください。</div>
     </div>
-      <div><strong>既に登録済みの方</strong></div>
-      <div><%= link_to "こちら", user_session_path %>からログインしてください。</div>
-</div>
