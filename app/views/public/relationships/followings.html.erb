@@ -12,7 +12,7 @@
           <% if @users.exists? %>
             <% @users.each do |user| %>
               <tr>
-                <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+                <td><%= image_tag user.get_profile_image, size: '50x50', class: "mt-3 mb-3 rounded-circle mr-5" %></td>
                 <td><%= user.user_name %></td>
                 <td><%= link_to 'Show', user %></td>
               </tr>
