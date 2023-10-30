@@ -48,7 +48,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user == @post.user
       @post.destroy
-    redirect_to posts_path, notice: "コメントが削除されました。"
+    redirect_to posts_path, notice: "投稿が削除されました。"
     end
   end
 
@@ -67,8 +67,7 @@ class Public::PostsController < ApplicationController
 
   private
 
-  def is_matching_login_user
-    # ログインユーザーが投稿者であるかをチェックする
+  def is_matching_login_user    # ログインユーザーが投稿者であるかをチェックする
     @post = Post.find(params[:id])
     unless @post.user == current_user
       redirect_to root_path, alert: "投稿者以外は編集・削除できません。"

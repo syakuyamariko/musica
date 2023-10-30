@@ -4,11 +4,9 @@
           <% if post.user == current_user %><!--もし、本の投稿をしたユーザーと現在ログインしているユーザーが一致していたら下記を表示-->
             <%= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-success float-right", style: "background-color: #22A39F;" %>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right", style: "margin-right: 10px; background-color: #EC625F;"%>
+          <% else admin_signed_in? %>
+            <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right", style: "background-color: #EC625F;"%>
           <% end %>
-          <% if  admin_signed_in? %>
-            <%= link_to 'Destroy', post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right", style: "background-color: #EC625F;"%>
-          <% end %>
-
           <div class="col-12 mt-3">
             <%= image_tag post.user.get_profile_image, size: '50x50', class: "mb-3 mr-3 rounded-circle" %>
             <i class="fas fa-user"></i> By <%= link_to post.user.user_name, user_path(post.user.id) %> ｜ <%= post.user.account_id %>
@@ -48,9 +46,6 @@
               <%= post.likes.count %>
             </td>
           <% end %>
-
-
-
         </tr>
       </tbody>
     </table>
