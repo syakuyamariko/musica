@@ -18,12 +18,13 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-#フォローしているユーザーと自分の投稿
-    @posts = Post.where(user_id: [current_user.id, *current_user&.following_ids])
-                 .order(created_at: :desc)
-    @post = Post.new
-    @post.id = current_user.id
-    @user = current_user
+    if current_user.present? || admin_signed_in?
+      user_id = current_user.present? ? current_user.id : nil # カレントユーザーがいる場合はそのIDを、そうでない場合はnilを設定
+      @posts = Post.where(user_id: [user_id, *current_user&.following_ids].compact)
+                   .order(created_at: :desc)
+      @post = Post.new
+      @post.id = user_id
+    end
   end
 
   def show
@@ -46,10 +47,8 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user == @post.user
       @post.destroy
-    redirect_to posts_path, notice: "投稿が削除されました。"
-    end
+      redirect_to posts_path, notice: "投稿が削除されました。"
   end
 
 
@@ -67,10 +66,11 @@ class Public::PostsController < ApplicationController
 
   private
 
-  def is_matching_login_user    # ログインユーザーが投稿者であるかをチェックする
+  def is_matching_login_user
     @post = Post.find(params[:id])
-    unless @post.user == current_user
-      redirect_to root_path, alert: "投稿者以外は編集・削除できません。"
+    # 管理者か、投稿者である場合に削除を許可
+    unless @post.user == current_user || current_admin
+      redirect_to root_path, alert: "投稿者または管理者以外は編集・削除できません。"
     end
   end
 
