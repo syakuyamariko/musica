@@ -1,5 +1,6 @@
 
   <% if admin_signed_in? %>
+
     <li class="nav-item">
       <%= link_to admin_users_path, class: "nav-link text-light" do %>
         <i class="fas fa-users"></i> 会員一覧
@@ -7,18 +8,19 @@
     </li>
      <li class="nav-item">
       <%=  link_to admin_posts_path ,class: 'nav-link text-light' do %>
-        <i class="fa-solid fa-icons"></i> タイムライン
+        <i class="fa-solid fa-icons"></i> Time Line
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i> ログアウト
+        <i class="fas fa-sign-out-alt"></i> Log out
       <% end %>
     </li>
     <br>
   <div class="text-center">
     <%= render "admin/searches/form" %>
   </div>
+
   <% elsif user_signed_in? %>
     <li class="nav-item">
       <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
@@ -27,7 +29,7 @@
     </li>
     <li class="nav-item">
       <%= link_to new_post_path(current_user), class: 'nav-link text-light' do %>
-        <i class="fa-solid fa-user-pen"></i> 投稿
+        <i class="fa-solid fa-user-pen"></i> Post
       <% end %>
     </li>
     <li class="nav-item">
@@ -37,7 +39,7 @@
     </li>
     <li class="nav-item">
       <%=  link_to posts_path ,class: 'nav-link text-light' do %>
-        <i class="fa-solid fa-icons"></i> タイムライン
+        <i class="fa-solid fa-icons"></i> Time Line
       <% end %>
     </li>
     <li class="nav-item">
@@ -57,7 +59,7 @@
     </li>
     <li class="nav-item">
       <%= link_to notifications_path, class: "nav-link text-light" do %>
-        <i class="fa-sharp fa-solid fa-bell"></i>通知一覧
+        <i class="fa-sharp fa-solid fa-bell"></i> Notice
       <% end %>
     </li>
 
